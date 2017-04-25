@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.0.1//EN" "validator_1_0_1.dtd" >
+<form-validation>
+<formset>
+<form name="loginForm" >
+<field property="username" depends="required">
+<arg0 key="un.username" resource="true"/>
+</field>
+
+<field property="password" depends="required">
+<arg0 key="un.password" resource="true"/>
+</field>
+</form>
+
+
+
+<form name="createUserForm" >
+<field property="username" depends="required">
+<arg0 key="un.username" resource="true"/>
+</field>
+
+<field property="password" depends="required">
+<arg0 key="un.password" resource="true"/>
+</field>
+
+<field property="cpassword" depends="required">
+<arg0 key="un.password" resource="true"/>
+</field>
+<field property="role" depends="required">
+<arg0 key="Role Field " resource="false"/>
+</field>
+<field property="status" depends="required">
+<arg0 key="Status Field " resource="false"/>
+</field>
+<field property="mobileno" depends="required">
+<arg0 key="Mobile No. " resource="false"/>
+</field>
+
+<field property="email" depends="required">
+<arg0 key="Email Id Field " resource="false"/>
+</field>
+
+</form>
+
+
+</formset>
+</form-validation>
