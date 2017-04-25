@@ -26,6 +26,7 @@ import com.college.persistence.AddressInfo;
 import com.college.persistence.FeeStructure;
 import com.college.persistence.Student;
 public class Test {
+// testing commit
 public static void main(String[] args) {//cmFtZXNoMTIzNA==
 	byte[] encodedBytes = Base64.encodeBase64("ramesh12345".getBytes());
 	System.out.println("encodedBytes " + new String(encodedBytes));
