@@ -24,9 +24,11 @@ public class Account {
 	private String updated_by;
 	@Column(name="updated_date")
 	private String updated_date;
+	@Column(name="collegeName")
+	private String collegeName;
 	public Account(){}
 	public Account(String acHolder, double debitAmount, double creditAmount,
-			String noteAgainst, String txDate , String updated_by, String updated_date) {
+			String noteAgainst, String txDate , String updated_by, String updated_date , String collegeName) {
 		super();
 		this.acHolder = acHolder;
 		this.debitAmount = debitAmount;
@@ -35,9 +37,16 @@ public class Account {
 		this.txDate = txDate;
 		this.updated_by = updated_by;
 		this.updated_date = updated_date;
+		this.collegeName = collegeName;
 	}
 	
 	
+	public String getCollegeName() {
+		return collegeName;
+	}
+	public void setCollegeName(String collegeName) {
+		this.collegeName = collegeName;
+	}
 	public String getUpdated_by() {
 		return updated_by;
 	}

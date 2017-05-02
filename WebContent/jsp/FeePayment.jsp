@@ -1,6 +1,6 @@
-<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
 
-<html>
+<%-- <html>
 <head>
 
 <style>
@@ -41,64 +41,62 @@ div {
 
 
 <body>
+ --%>
+
+<html:form action="/feePaymentSubmit" method="post"
+	enctype="multipart/form-data">
+	<div class="panel panel-danger">
+		<div class="panel-heading"><b>Fee Payment Window</b></div>
+		<div class="panel-body">
 
 
-<html:form action="/feePaymentSubmit" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+			<label for="fname">Choose Trade</label>
+				<label class="radio-inline"><html:radio property="trade" value="fitter">Fitter</html:radio></label> 
+				<label class="radio-inline"><html:radio property="trade" value="electrical">Electrical</html:radio></label>
+			</div>
+			<div class="form-group">
+				<label for="fname">Select Session</label>
+				<html:select property="session" styleClass="form-control">
+					<html:option value="Select"></html:option>
+					<html:option value="2017-2019"></html:option>
+					<html:option value="2019-2021"></html:option>
+					<html:option value="2021-2023"></html:option>
+					<html:option value="2023-2025"></html:option>
+					<html:option value="2025-2027"></html:option>
+					<html:option value="2027-2029"></html:option>
+					<html:option value="2029-2031"></html:option>
+					<html:option value="2031-2033"></html:option>
+					<html:option value="2033-2035"></html:option>
+					<html:option value="2035-2037"></html:option>
+					<html:option value="2037-2039"></html:option>
+					<html:option value="2039-2041"></html:option>
+					<html:option value="2041-2043"></html:option>
+					<html:option value="2043-2045"></html:option>
+				</html:select>
+			</div>
 
-<div class="container">
-<table>
-<caption ><h1>Fee Payment Window</h1></caption>
+			<div class="form-group">
+				<label for="fname">Student ID I.E (MTPJPL-)</label>
+				<html:text styleClass="form-control" property="sid"></html:text>
+			</div>
 
-<tr>
-<td><label for="fname">Choose Trade</label></td>
-<td><html:radio property="trade" value="fitter">Fitter</html:radio></td>
-<td><html:radio property="trade" value="electrical">Electrical</html:radio></td>
-</tr>
+			<div class="form-group">
+				<label for="fname">Enter Fee Amount (Rs.)</label>
+				<html:text styleClass="form-control" property="fee"></html:text>
+			</div>
 
-<tr>
-<td><label for="fname">Select Session</label></td>
-<td colspan="2"><html:select property="session">
-  <html:option value="Select"></html:option>
-  <html:option value="2017-2019"></html:option>
-  <html:option value="2019-2021"></html:option>
-  <html:option value="2021-2023"></html:option>
-  <html:option value="2023-2025"></html:option>
-  <html:option value="2025-2027"></html:option>
-  <html:option value="2027-2029"></html:option>
-  <html:option value="2029-2031"></html:option>
-  <html:option value="2031-2033"></html:option>
-  <html:option value="2033-2035"></html:option>
-  <html:option value="2035-2037"></html:option>
-  <html:option value="2037-2039"></html:option>
-  <html:option value="2039-2041"></html:option>
-  <html:option value="2041-2043"></html:option>
-  <html:option value="2043-2045"></html:option>
-  </html:select>
-  </td>
-</tr>
+			<div class="form-group">
+				<label for="fname">Note If Any </label>
+				<html:text styleClass="form-control" property="note"></html:text>
+			</div>
 
-<tr>
-<td><label for="fname">Student ID I.E (MTPJPL-)</label></td>
-<td colspan="2"><html:text property="sid"></html:text></td>
-</tr>
-
-<tr>
-<td><label for="fname">Enter Fee Amount (Rs.)</label></td>
-<td colspan="2"><html:text property="fee"></html:text></td>
-</tr>
-
-<tr>
-<td><label for="fname">Note If Any </label></td>
-<td colspan="2"><html:text property="note"></html:text></td>
-</tr>
-
-<tr>
-  <td colspan="3" align="center"><html:submit value="Submit"></html:submit></td>
-  </tr>
-</table>
-</div>
-
+			<div class="form-group">
+				<html:submit styleClass="btn btn-primary" value="Submit"></html:submit>
+			</div>
+		</div>
+	</div>
 </html:form>
-</body>
+<%-- </body>
 
-</html>
+</html> --%>

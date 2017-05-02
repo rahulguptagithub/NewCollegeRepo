@@ -25,6 +25,7 @@ public class FeeStructureAction extends Action{
 		FeeStructureForm feeStructureForm = (FeeStructureForm)form;
 		double total_fee = feeStructureForm.getAdmission_fee()+feeStructureForm.getExam_fee()+feeStructureForm.getDevelopment_fee()+feeStructureForm.getCaution_money()+feeStructureForm.getMisc_fee()+feeStructureForm.getPoor_boy_fund()+feeStructureForm.getTution_fee();
 		String userName =(String) request.getSession().getAttribute("userName");
+		System.out.println("feeStructureForm.getDuration()" + feeStructureForm.getDuration());
 		FeeStructureDto feeStructureDto = new FeeStructureDto(feeStructureForm.getSession(),feeStructureForm.getTrade(),feeStructureForm.getDuration(),feeStructureForm.getAdmission_fee(),feeStructureForm.getExam_fee(),feeStructureForm.getTution_fee(),feeStructureForm.getDevelopment_fee(),feeStructureForm.getCaution_money(),feeStructureForm.getMisc_fee(),feeStructureForm.getPoor_boy_fund(),userName,(new java.sql.Date(new Date().getTime())).toString(),total_fee ,"Active","MTPJPL");
 		cLGDao =new CLGDaoImpl();
 		boolean isSaved =cLGDao.saveFeeStructure(feeStructureDto);

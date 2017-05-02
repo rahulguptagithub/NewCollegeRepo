@@ -1,9 +1,1 @@
-<html>
-
-<body >
-<div >
-<h1>MAHARANA PRATAP I.T.I</h1>
-</div>
-
-</body>
-</html>
+<h1>MAHARANA PRATAP Pvt I.T.I</h1>

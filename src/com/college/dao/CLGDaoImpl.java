@@ -3,6 +3,8 @@ package com.college.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -21,6 +23,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.college.dto.AcademicRecordsDto;
+import com.college.dto.AccountDto;
 import com.college.dto.AddressInfoDto;
 import com.college.dto.FeeStructureDto;
 import com.college.dto.ForgotPasswordDto;
@@ -28,6 +31,7 @@ import com.college.dto.LoginDto;
 import com.college.dto.StudentDto;
 import com.college.dto.StudentPaymentDto;
 import com.college.exception.NotSufficientBalanceException;
+import com.college.exception.RecordNotFountException;
 import com.college.exception.UserExistException;
 import com.college.form.CreditForm;
 import com.college.form.ExpenseForm;
@@ -87,11 +91,13 @@ public class CLGDaoImpl implements CLGDao{
 		boolean flag = false;
 		Transaction tx =null;
 		try {
+			DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+			String date =dateFormat.format(new Date());
 			byte[] encodedBytes = Base64.encodeBase64(userForm.getPassword().getBytes());
 			SessionFactory sf = ConnectionUtil.getfactory();
 			Session session = sf.openSession();
 			tx = session.beginTransaction();
-			User user = new User(userForm.getUsername(), new String(encodedBytes), userForm.getRole(), userForm.getStatus(), (new java.sql.Date(new Date().getTime())).toString(), userName, userForm.getMobileno(), userForm.getEmail());
+			User user = new User(userForm.getUsername(), new String(encodedBytes), userForm.getRole(), userForm.getStatus(), date, userName, userForm.getMobileno(), userForm.getEmail(),"MTPJPL");
 	        session.save(user);
 			tx.commit();
 			session.close();
@@ -101,9 +107,6 @@ public class CLGDaoImpl implements CLGDao{
 		}
 		return flag;
 		}	
-	
-	
-	
 	
 	private boolean fetchUsers(String userName) {
 		boolean isUserExist = false;
@@ -167,19 +170,21 @@ public class CLGDaoImpl implements CLGDao{
 		}
 		System.out.println("recoverPassword called .pwd" + pwd);
 		return pwd;
-		 
+		
 	}
 	
 	public String saveStudent(StudentDto studentDto ){
 		Transaction tx =null;
 		String sid= null;
 		try {
-			String date =(new java.sql.Date(new Date().getTime())).toString();
+			/*String date =(new java.sql.Date(new Date().getTime())).toString();*/
+			DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+			String date =dateFormat.format(new Date());
 			SessionFactory sf = ConnectionUtil.getfactory();
 			Session session = sf.openSession();
 			tx = session.beginTransaction();
 			sid = SIDGenerator.getNextSid();
-			Student student = new Student( sid, studentDto.getTrade(), studentDto.getStudent_name(), studentDto.getGuardian_type(), studentDto.getGuardian_name(), studentDto.getOccupation(), studentDto.getDob(), studentDto.getCategory(),sid, studentDto.getAdmittedBy(), studentDto.getAdmision_Date(), studentDto.getFee(),studentDto.getDue_date(),studentDto.getGender(),studentDto.getSession(),studentDto.getFormNo());
+			Student student = new Student( sid, studentDto.getTrade(), studentDto.getStudent_name(), studentDto.getGuardian_type(), studentDto.getGuardian_name(), studentDto.getOccupation(), studentDto.getDob(), studentDto.getCategory(),sid, studentDto.getAdmittedBy(), studentDto.getAdmision_Date(), studentDto.getFee(),studentDto.getDue_date(),studentDto.getGender(),studentDto.getSession(),studentDto.getFormNo(),"MTPJPL");
 			session.save(student);
 			Set<AddressInfoDto> addressInfoDtoSet = studentDto.getPermanentAddressSet();
 			Iterator<AddressInfoDto> addressIterator = addressInfoDtoSet.iterator();
@@ -198,9 +203,9 @@ public class CLGDaoImpl implements CLGDao{
 				session.save(academicRecords);
 				academicRecords.setStudent(student);
 			}
-			StudentPayment studentPayment = new StudentPayment(date, studentDto.getFee(), studentDto.getAdmittedBy(), sid);
+			StudentPayment studentPayment = new StudentPayment(date, studentDto.getFee(), studentDto.getAdmittedBy(), sid,"MTPJPL");
 			session.save(studentPayment);
-			Account account = new Account(studentDto.getAdmittedBy(), 0.0, studentDto.getFee(), "Aggainst Admission Of " +sid , date , studentDto.getAdmittedBy() , date);
+			Account account = new Account(studentDto.getAdmittedBy(), 0.0, studentDto.getFee(), "Aggainst Admission Of " +sid , date , studentDto.getAdmittedBy() , date ,"MTPJPL");
 			session.save(account);
 			tx.commit();
 			session.close();
@@ -218,7 +223,8 @@ public class CLGDaoImpl implements CLGDao{
 			SessionFactory sf = ConnectionUtil.getfactory();
 			Session session = sf.openSession();
 			tx = session.beginTransaction();
-			FeeStructure feeStructure = new FeeStructure(feeStructureDto.getSession(),feeStructureDto.getTrade(),feeStructureDto.getDuration(),feeStructureDto.getAdmission_fee(),feeStructureDto.getExam_fee(),feeStructureDto.getTution_fee(),feeStructureDto.getDevelopment_fee(),feeStructureDto.getCaution_money(),feeStructureDto.getMisc_fee(),feeStructureDto.getPoor_boy_fund(),feeStructureDto.getUpdated_by(),feeStructureDto.getUpdated_date(),feeStructureDto.getTotal_fee(),"Active","MTPJPL");
+			System.out.println("duration" + feeStructureDto.getDuration());
+			FeeStructure feeStructure = new FeeStructure(feeStructureDto.getSession(),feeStructureDto.getTrade(),feeStructureDto.getDuration(),feeStructureDto.getAdmission_fee(),feeStructureDto.getExam_fee(),feeStructureDto.getTution_fee(),feeStructureDto.getDevelopment_fee(),feeStructureDto.getCaution_money(),feeStructureDto.getMisc_fee(),feeStructureDto.getPoor_boy_fund(),feeStructureDto.getUpdated_by(),feeStructureDto.getUpdated_date(),feeStructureDto.getTotal_fee(),"MTPJPL","Active");
 	        session.save(feeStructure);
 			tx.commit();
 			session.close();
@@ -234,13 +240,15 @@ public class CLGDaoImpl implements CLGDao{
 		boolean flag = false;
 		Transaction tx =null;
 		try {
-			String date =(new java.sql.Date(new Date().getTime())).toString();
+			//String date =(new java.sql.Date(new Date().getTime())).toString();
+			DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+			String date =dateFormat.format(new Date());
 			SessionFactory sf = ConnectionUtil.getfactory();
 			Session session = sf.openSession();
 			tx = session.beginTransaction();
-			StudentPayment studentPayment = new StudentPayment( date, feePaymentForm.getFee(), userName , feePaymentForm.getSid());
+			StudentPayment studentPayment = new StudentPayment( date, feePaymentForm.getFee(), userName , feePaymentForm.getSid(),"MTPJPL");
 			session.save(studentPayment);
-			Account account = new Account(userName, 0.0, feePaymentForm.getFee(), "Received Payment Against " + feePaymentForm.getSid() , date ,userName ,date);
+			Account account = new Account(userName, 0.0, feePaymentForm.getFee(), "Received Payment Against " + feePaymentForm.getSid() , date ,userName ,date,"MTPJPL");
 			session.save(account);
 			tx.commit();
 			session.close();
@@ -256,11 +264,13 @@ public class CLGDaoImpl implements CLGDao{
 		boolean flag = false;
 		Transaction tx =null;
 		try {
-			String date =(new java.sql.Date(new Date().getTime())).toString();
+			//String date =(new java.sql.Date(new Date().getTime())).toString();
+			DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+			String date =dateFormat.format(new Date());
 			SessionFactory sf = ConnectionUtil.getfactory();
 			Session session = sf.openSession();
 			tx = session.beginTransaction();
-			Account account = new Account(cf.getInAccount(), 0.0, cf.getAmount(), cf.getNote() , cf.getDate() ,userName ,date);
+			Account account = new Account(cf.getInAccount(), 0.0, cf.getAmount(), cf.getNote() , cf.getDate() ,userName ,date ,"MTPJPL");
 			session.save(account);
 			tx.commit();
 			session.close();
@@ -274,7 +284,9 @@ public class CLGDaoImpl implements CLGDao{
 	public boolean debitAccount(ExpenseForm ef ,String userName )throws NotSufficientBalanceException{
 		boolean flag = false;
 		Transaction tx =null;
-			String date =(new java.sql.Date(new Date().getTime())).toString();
+			//String date =(new java.sql.Date(new Date().getTime())).toString();
+		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+		String date =dateFormat.format(new Date());
 			SessionFactory sf = ConnectionUtil.getfactory();
 			Session session = sf.openSession();
 			tx = session.beginTransaction();
@@ -292,7 +304,7 @@ public class CLGDaoImpl implements CLGDao{
 				}
 				System.out.println("crAmount\t"+ crAmount + "drAmount\t"+drAmount);
 				if((crAmount-drAmount)> ef.getExpense()){
-					Account account = new Account(ef.getFromAccount(), ef.getExpense(), 0.0, ef.getNote() , ef.getDate() ,userName ,date);
+					Account account = new Account(ef.getFromAccount(), ef.getExpense(), 0.0, ef.getNote() , ef.getDate() ,userName ,date , "MTPJPL");
 					session.save(account);
 					tx.commit();
 					session.close();
@@ -316,6 +328,7 @@ public class CLGDaoImpl implements CLGDao{
 		Query query = session.createQuery(queryString);
 		query.setParameter(0, "Active");
 		list = query.list();
+		tx.commit();
 		}catch(Exception e){
 			
 		}
@@ -325,7 +338,9 @@ public class CLGDaoImpl implements CLGDao{
 	public boolean transferFund(TransferForm transferForm ,String userName ) throws NotSufficientBalanceException{
 		boolean flag=false;
 		Transaction tx =null;
-		String date =(new java.sql.Date(new Date().getTime())).toString();
+		//String date =(new java.sql.Date(new Date().getTime())).toString();
+		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+		String date =dateFormat.format(new Date());
 		SessionFactory sf = ConnectionUtil.getfactory();
 		Session session = sf.openSession();
 		tx = session.beginTransaction();
@@ -343,9 +358,9 @@ public class CLGDaoImpl implements CLGDao{
 			}
 			System.out.println("crAmount\t"+ crAmount + "drAmount\t"+drAmount);
 			if((crAmount-drAmount)>= transferForm.getTrsfrAmount()){
-				Account fromAccount = new Account(transferForm.getFromAccount(),transferForm.getTrsfrAmount(), 0.0, transferForm.getNote() , date ,userName ,date);
+				Account fromAccount = new Account(transferForm.getFromAccount(),transferForm.getTrsfrAmount(), 0.0, transferForm.getNote() , date ,userName ,date,"MTPJPL");
 				session.save(fromAccount);
-				Account toAccount = new Account(transferForm.getToAccount(),0.0, transferForm.getTrsfrAmount(), transferForm.getNote() , date ,userName ,date);
+				Account toAccount = new Account(transferForm.getToAccount(),0.0, transferForm.getTrsfrAmount(), transferForm.getNote() , date ,userName ,date,"MTPJPL");
 				session.save(toAccount);
 				tx.commit();
 				session.close();
@@ -368,8 +383,10 @@ public class CLGDaoImpl implements CLGDao{
 			SessionFactory sf = ConnectionUtil.getfactory();
 			Session session = sf.openSession();
 			tx = session.beginTransaction();
-			String created_date =(new java.sql.Date(new Date().getTime())).toString();
-			AdmissionForm admissionForm = new AdmissionForm(created_date, userName, "Active");
+			DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+			String date =dateFormat.format(new Date());
+			//String created_date =(new java.sql.Date(new Date().getTime())).toString();
+			AdmissionForm admissionForm = new AdmissionForm(date, userName, "Active","MTPJPL");
 			formNo = (Integer) session.save(admissionForm);
 			tx.commit();
 			session.close();
@@ -379,23 +396,24 @@ public class CLGDaoImpl implements CLGDao{
 		return formNo;
 	}
 	
-	public List<FeeStructureDto> fetchFeeStructureDetail(String trade, String session , ServletContext ctx ){
+	public List<FeeStructureDto> fetchFeeStructureDetail(String trade, String session , ServletContext ctx ) throws RecordNotFountException{
 		Transaction tx =null;
 		FeeStructureDto feeStructureDto = null;
 		
 		List<FeeStructureDto> feeStructureDtoList = null;
-		try {
+		
 			SessionFactory sf = ConnectionUtil.getfactory();
 			Session dbSession = sf.openSession();
 			tx = dbSession.beginTransaction();
 			
 			//String queryString="from FeeStructure fs where fs.session=? and fs.trade=?";
-			String queryString = "select distinct(trade) from FeeStructure fs where fs.status=? and fs.session=? and fs.trade=?";
+			String queryString = "from FeeStructure fs where fs.status=? and fs.session=? and fs.trade=?";
 			Query query = dbSession.createQuery(queryString);
 			query.setParameter(0, "Active");
 			query.setParameter(1,session );
 			query.setParameter(2,trade );
-			if(query.list() != null && query.list().size()>1){
+			if(query.list() != null && query.list().size()>0){
+				System.out.println("inside of condition");
 				List<FeeStructure> feeStructureList = query.list();
 				feeStructureDtoList = new ArrayList<FeeStructureDto>();
 				for(FeeStructure feeStructure: feeStructureList){
@@ -413,12 +431,52 @@ public class CLGDaoImpl implements CLGDao{
 					feeStructureDto.setTution_fee(feeStructure.getTution_fee());
 					feeStructureDtoList.add(feeStructureDto);
 				}
+			}else{
+				throw new RecordNotFountException();
 			}
 			tx.commit();
 			dbSession.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		return feeStructureDtoList;
+	}
+	
+	public List<AccountDto> showUserCreditAccountByDate(String userName , String startDate , String endDate) throws RecordNotFountException{
+		
+		List<AccountDto> accountDtolist =null;
+		Transaction tx =null;
+		SessionFactory sf = ConnectionUtil.getfactory();
+		Session dbSession = sf.openSession();
+		tx = dbSession.beginTransaction();
+		
+		String queryString = "from Account ac where ac.updated_date>=? and ac.updated_date<=?";
+		Query query = dbSession.createQuery(queryString);
+		query.setParameter(0, startDate);
+		query.setParameter(1,endDate );
+		
+		if(query.list() != null && query.list().size()>0){
+			System.out.println("inside of condition........");
+			List<Account> accountList = query.list();
+			accountDtolist = new ArrayList<AccountDto>();
+			for(Account account: accountList){
+				AccountDto accontDto = new AccountDto();
+				accontDto.setAcHolder(accontDto.getAcHolder());
+				accontDto.setCollegeName(account.getCollegeName());
+				accontDto.setCreditAmount(account.getCreditAmount());
+				accontDto.setDebitAmount(account.getDebitAmount());
+				accontDto.setNoteAgainst(account.getNoteAgainst());
+				accontDto.setTxDate(account.getTxDate());
+				accontDto.setTxId(account.getTxId());
+				accontDto.setUpdated_by(account.getUpdated_by());
+				accontDto.setUpdated_date(account.getUpdated_date());
+				accountDtolist.add(accontDto);
+			}
+		}else{
+			throw new RecordNotFountException();
+		}
+		tx.commit();
+		dbSession.close();
+
+		
+		return null;
+		
 	}
 }

@@ -26,11 +26,21 @@ public class GenerateFeeStructuredAction extends Action{
 		String result ="fail";
 		DynaValidatorForm dvf=(DynaValidatorForm) form;
 		String trade = dvf.getString("trade");
+		System.out.println("trade\t"+trade);
 		String session =dvf.getString("session");
+		System.out.println("session\t"+session);
 		ServletContext ctx =request.getSession().getServletContext();
 		CLGDao cLGDao = new CLGDaoImpl();
 		List<FeeStructureDto> feeStructureDtoList = cLGDao.fetchFeeStructureDetail(trade , session ,ctx );
-		//PDFGenerator 
+		String fileName = PDFGenerator.createFeeStructurePDF(feeStructureDtoList, ctx);
+		if(fileName !=null){
+			//String formName = PDFGenerator.createPDFAdmissionForm(ctx , formNo);
+			request.setAttribute("message","Fee Structure Created Successfully!!Click Below button to Download");
+			request.setAttribute("formName",fileName);
+			result ="success";
+			
+		}
+		System.out.println("jjjjjj"+result);
 		return mapping.findForward(result);
 	}
 }

@@ -21,18 +21,22 @@
 </definition>
 
 <definition name="HomeDef1" extends="BaseDef1">
-<put name ="BODY" value = "/jsp/home1.jsp"/>
+
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
 </definition>
 
 <definition name="ShowCreateUser" extends="BaseDef1">
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
 <put name ="BODY" value = "/jsp/CreateUser.jsp"/>
 </definition>
 
 <definition name="ShowSucess" extends="BaseDef1">
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
 <put name ="BODY" value = "/jsp/Sucess.jsp"/>
 </definition>
 
 <definition name="ShowForgotPassword" extends="BaseDef1">
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
 <put name ="BODY" value = "/jsp/ForgotPassword.jsp"/>
 </definition>
 
@@ -80,5 +84,21 @@
 <put name ="BODY" value = "/jsp/AdmissionFormGenerated.jsp"/>
 <put name ="LMENU" value = "/jsp/home1.jsp"/>
 </definition>
+
+<definition name="ShowGenerateFeeStructure" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/GenerateFeeStructure.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="ShowFeeStructureGeneratedConf" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/FeeStructureGenereted.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="ShowTransaction" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/DisplayTransaction.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
 
 </tiles-definitions>

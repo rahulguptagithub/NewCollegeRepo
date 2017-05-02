@@ -30,6 +30,16 @@ public class User {
 	private String mobile;
 	@Column(name="email")
 	private String email;
+	@Column(name="collegeName")
+	private String collegeName;
+	
+	
+	public String getCollegeName() {
+		return collegeName;
+	}
+	public void setCollegeName(String collegeName) {
+		this.collegeName = collegeName;
+	}
 	public int getUserId() {
 		return userId;
 	}
@@ -84,9 +94,10 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	public User(){}
 	public User(String uName, String password, String role, String status,
-			String created_date, String created_by, String mobile, String email) {
+			String created_date, String created_by, String mobile, String email ,String collegeName) {
 		super();
 		this.uName = uName;
 		this.password = password;
@@ -96,6 +107,7 @@ public class User {
 		this.created_by = created_by;
 		this.mobile = mobile;
 		this.email = email;
+		this.collegeName=collegeName;
 	}
 	
 	

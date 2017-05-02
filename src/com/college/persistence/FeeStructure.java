@@ -14,7 +14,7 @@ public class FeeStructure {
 	@Column(name="trade")
 	private String trade;
 	@Column(name="duration")
-	private int duration;
+	private String duration;
 	@Column(name="admission_fee")
 	private double admission_fee;
 	@Column(name="exam_fee")
@@ -73,10 +73,11 @@ public class FeeStructure {
 	public void setTrade(String trade) {
 		this.trade = trade;
 	}
-	public int getDuration() {
+	
+	public String getDuration() {
 		return duration;
 	}
-	public void setDuration(int duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 	public double getAdmission_fee() {
@@ -141,7 +142,7 @@ public class FeeStructure {
 	}
 	
 	public FeeStructure(){}
-	public FeeStructure(String session, String trade, int duration,
+	public FeeStructure(String session, String trade, String duration,
 			double admission_fee, double exam_fee, double tution_fee,
 			double development_fee, double caution_money, double misc_fee,
 			double poor_boy_fund, String updated_by, String updated_date,

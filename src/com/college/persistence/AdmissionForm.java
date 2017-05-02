@@ -20,6 +20,9 @@ public class AdmissionForm {
 	private String created_by ;
 @Column(name="status")
 	private String status;
+@Column(name="collegeName")
+private String collegeName;
+
 public int getFormId() {
 	return formId;
 }
@@ -44,11 +47,19 @@ public String getStatus() {
 public void setStatus(String status) {
 	this.status = status;
 }
-public AdmissionForm(String created_date, String created_by, String status) {
+
+public String getCollegeName() {
+	return collegeName;
+}
+public void setCollegeName(String collegeName) {
+	this.collegeName = collegeName;
+}
+public AdmissionForm(String created_date, String created_by, String status,String collegeName) {
 	super();
 	this.created_date = created_date;
 	this.created_by = created_by;
 	this.status = status;
+	this.collegeName=collegeName;
 }
 public AdmissionForm(){}
 }

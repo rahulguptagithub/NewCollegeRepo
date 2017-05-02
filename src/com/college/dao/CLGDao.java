@@ -7,11 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.validator.DynaValidatorForm;
 
+import com.college.dto.AccountDto;
 import com.college.dto.FeeStructureDto;
 import com.college.dto.ForgotPasswordDto;
 import com.college.dto.LoginDto;
 import com.college.dto.StudentDto;
 import com.college.exception.NotSufficientBalanceException;
+import com.college.exception.RecordNotFountException;
 import com.college.exception.UserExistException;
 import com.college.form.CreditForm;
 import com.college.form.ExpenseForm;
@@ -31,5 +33,6 @@ public interface CLGDao {
 	public  List<String> findDistinctAccountHolder();
 	public boolean transferFund(TransferForm transferForm ,String userName )throws NotSufficientBalanceException;
 	public int  generateAdmissionForm(String userName);
-	public List<FeeStructureDto> fetchFeeStructureDetail(String trade, String session , ServletContext ctx );
+	public List<FeeStructureDto> fetchFeeStructureDetail(String trade, String session , ServletContext ctx )throws RecordNotFountException;
+	public List<AccountDto> showUserCreditAccountByDate(String userName , String startDate , String endDate)throws RecordNotFountException;
 }

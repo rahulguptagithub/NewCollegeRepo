@@ -14,6 +14,7 @@ public class TransferForm extends ValidatorActionForm{
 	private String toAccount;
 	private double trsfrAmount;
 	private String note;
+
 	public String getFromAccount() {
 		return fromAccount;
 	}

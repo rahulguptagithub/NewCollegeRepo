@@ -1,85 +1,71 @@
-<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
 
-<html>
-<head>
+<html:form action="/creditSubmit" method="post">
 
-<style>
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+	<div class="panel panel-danger">
 
-input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+		<div class="panel-heading">
+			<div>
+				<b class="text-primary">Credit Window</b>
+			</div>
+		</div>
 
-input[type=submit]:hover {
-    background-color: #45a049;
-}
+		<div class="panel-body">
 
-div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
-</style>
+			<div class="col-md-12">
+				<html:errors />
+				<div class="form-group">
+					<div>
+						<label for="fname" class="text-primary">To Account</label>
+						<html:select property="inAccount" styleClass="form-control">
+							<html:option value="0">Select Account</html:option>
+							<html:optionsCollection name="creditForm"
+								property="accountOptions" />
+						</html:select>
+					</div>
+				</div>
 
 
-</head>
+				<div class="form-group">
+					<div>
+						<label for="fname" class="text-primary">Enter Credit
+							Amount (Rs.)</label>
+						<html:text property="amount" styleClass="form-control"></html:text>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div>
+						<label for="fname" class="text-primary">Credit Against</label>
+						<html:text property="note" styleClass="form-control"></html:text>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="fname" class="text-primary">Credit Date</label>
+					<div class="controls input-append date form_date" data-date=""
+						data-date-format="dd MM yyyy" data-link-field="dtp_input2"
+						data-link-format="dd-mm-yyyy">
+						<html:text property="date" size="16" styleId="dtp_input2"
+							styleClass="form-control" readonly="true"></html:text>
+						<span class="add-on"><i class="icon-th"></i></span>
+					</div>
+
+				</div>
+				<div class="form-group">
+					<div>
+						<html:submit value="Credit" styleClass="btn btn-primary"></html:submit>
+					</div>
+				</div>
+			</div>
 
 
-<body>
+		</div>
+	</div>
 
-
-<html:form action="/creditSubmit" method="post" >
-
-<div class="container">
-<table>
-<caption ><h1>Credit Window</h1></caption>
-<tr><td colspan="2"><html:errors/></td></tr>
-<tr>
-<td><label for="fname">In Account Of</label></td>
-<td>
-<html:select property="inAccount" >
-<html:option value="0">Select Account</html:option>
-<html:optionsCollection name="creditForm" property="accountOptions" />
-</html:select></td>
-</tr>
-
-<tr>
-<td><label for="fname">Enter Credit Amount (Rs.)</label></td>
-<td colspan="2"><html:text property="amount" ></html:text></td>
-</tr>
-
-<tr>
-<td><label for="fname">Credit Against</label></td>
-<td colspan="2"><html:text property="note"></html:text></td>
-</tr>
-
-<tr>
-<td><label for="fname">Credit Date</label></td>
-<td colspan="2"><html:text property="date"></html:text></td>
-</tr>
-
-<tr>
-  <td colspan="2" align="center"><html:submit value="Credit"></html:submit></td>
-  </tr>
-</table>
-</div>
 
 </html:form>
-</body>
 
-</html>
+<%-- </body>
+<<
+</html> --%>

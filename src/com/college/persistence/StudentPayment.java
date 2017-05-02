@@ -17,7 +17,8 @@ public class StudentPayment {
 	private String received_by;
 	@Column(name="sid")
 	private String sid;
-	
+	@Column(name="collegeName")
+	private String collegeName;
 	
 	public String getReceived_by() {
 		return received_by;
@@ -47,13 +48,13 @@ public class StudentPayment {
 	}
 	public StudentPayment(){}
 	public StudentPayment(String date, double paidFee,
-			String received_by ,String sid) {
+			String received_by ,String sid , String collegeName) {
 		super();
-		//this.sid = sid;
 		this.date = date;
 		this.paidFee = paidFee;
 		this.received_by = received_by;
 		this.sid = sid;
+		this.collegeName=collegeName;
 	}
 	
 

@@ -290,11 +290,11 @@ e.printStackTrace();
 	
 	
 	public static String createFeeStructurePDF(List<FeeStructureDto> feeStructureDtoList , ServletContext ctx){
-	
-		if(feeStructureDtoList !=null && feeStructureDtoList.size()>0){
+		String fileName = null;
+	if(feeStructureDtoList !=null && feeStructureDtoList.size()>0){
 			String session =feeStructureDtoList.get(0).getSession();
 			Document document = new Document();
-			String fileName ="feeStructure"+session+".pdf";
+			fileName ="feeStructure"+session+".pdf";
 			String filePath = ctx.getRealPath("/")+"FeeStructure";
 			File folder = new File(filePath);
 		    if(!folder.exists()){
@@ -306,104 +306,155 @@ e.printStackTrace();
 	        	
 	            PdfWriter.getInstance(document, new FileOutputStream(newFile));
 	            document.open();
-	            Chunk blank =new Chunk("                                                                     ");
-	            document.add(blank);//for printing money receipt in center of page
-	           /* Chunk underline = new Chunk("Money Receipt");
-	            underline.setUnderline(0.2f, -2f); //0.1 thick, -2 y-location
-	            document.add(underline);*/
-	           /* Paragraph paragraph = new Paragraph("MAHARANA PRATAP Pvt. I.T.I");
-	           
-	            paragraph.setSpacingBefore(10);
-	            paragraph.setAlignment(Element.ALIGN_CENTER);
-	            document.add(paragraph);*/
-	            
+	            Paragraph space = new Paragraph ("");
+	            document.add(space);
 	            Font ft= new Font();
-	    	    ft.setSize(20);
-	    	    Chunk heading = new Chunk("MAHARANA PRATAP Pvt. ITI");
-	    	    heading.setUnderline(0.2f, -2f);
+	    	    ft.setSize(18);
+	    	    Chunk heading = new Chunk("                            MAHARANA PRATAP Pvt. ITI");
+	    	   // heading.setUnderline(0.2f, -2f);
 	    	    heading.setFont(ft);
+	    	    
 	    	    document.add(heading);
-	    	    Paragraph space = new Paragraph ("");
+	    	    
 	    	    document.add(space);
 	    	    Chunk blank2 =new Chunk("                                              ");
 	    	    document.add(blank2);
 	    	    Font f1t= new Font();
 	    	    f1t.setSize(15);
-	    	    Chunk address = new Chunk("Chiraiya Khar,Japla(Jharkhand)");
+	    	    Chunk address = new Chunk(" Chiraiya Khar,Japla(Jharkhand)");
 	    	    address.setFont(f1t);
 	    	    document.add(address);
 	    	    
 	    	    
-	           Paragraph title = new Paragraph("Fee Structure chargeable for tainees admitted in different course for the session    "+ session );
-	           //title.setAlignment(Element.ALIGN_CENTER);
-	           document.add(title);
-	    	    
-	    	    
-	    	    
-	    	    
+	            Paragraph title = new Paragraph("Fee Structure chargeable for tainees admitted in different course for the session    "+ session );
+	            title.setSpacingBefore(5);
 	            
-	            PdfPTable table = new PdfPTable(feeStructureDtoList.size()); 
+	            document.add(title);
+	            int columnsNo = feeStructureDtoList.size()+2;
+	            PdfPTable table = new PdfPTable(columnsNo);
+	            
 	            table.setSpacingBefore(25);
-	            PdfPCell cell11 = new PdfPCell(new Paragraph("01"));
-	            PdfPCell cell12 = new PdfPCell(new Paragraph("Trade Name"));
-	            PdfPCell cell13 = new PdfPCell(new Paragraph("Electrician"));
-	            PdfPCell cell14 = new PdfPCell(new Paragraph("Fitter"));
-
-	            table.addCell(cell11);
-	            table.addCell(cell12);
-	            table.addCell(cell13);
-	            table.addCell(cell14);
-	            
-	            PdfPCell cell21 = new PdfPCell(new Paragraph("2"));
-	            PdfPCell cell22 = new PdfPCell(new Paragraph("Duration"));
-	            PdfPCell cell23 = new PdfPCell(new Paragraph(feeStructureDto.getDuration()));
-	            PdfPCell cell24 = new PdfPCell(new Paragraph(feeStructureDto.getDuration()));
-	            table.addCell(cell21);
-	            table.addCell(cell22);
-	            table.addCell(cell23);
-	            table.addCell(cell24);
+	             PdfPCell slNo1 = new PdfPCell(new Paragraph("1"));
+	             PdfPCell tradeTitle = new PdfPCell(new Paragraph("Trade Name"));
+	             table.addCell(slNo1);
+	             table.addCell(tradeTitle);
+	            for(int i=0; i< feeStructureDtoList.size() ;i++){
+	            	 PdfPCell cell = new PdfPCell(new Paragraph(feeStructureDtoList.get(i).getTrade()));
+	            	 table.addCell(cell);
+	            }
 	            
 	            
-	            PdfPCell cell31 = new PdfPCell(new Paragraph("Trade"));
-	            PdfPCell cell32 = new PdfPCell(new Paragraph(studentDto.getTrade()));
-	            PdfPCell cell33 = new PdfPCell(new Paragraph("Session"));
-	            PdfPCell cell34 = new PdfPCell(new Paragraph(studentDto.getSession()));
+	            PdfPCell slNo2 = new PdfPCell(new Paragraph("2"));
+	            PdfPCell duration = new PdfPCell(new Paragraph("Duration"));
+	            table.addCell(slNo2);
+	            table.addCell(duration);
 	            
-	            table.addCell(cell31);
-	            table.addCell(cell32);
-	            table.addCell(cell33);
-	            table.addCell(cell34);
+	            for(int i=0; i< feeStructureDtoList.size() ;i++){
+	            	 PdfPCell cell = new PdfPCell(new Paragraph(feeStructureDtoList.get(i).getDuration()+""));
+	            	 table.addCell(cell);
+	            }
+	            
+	            PdfPCell slNo3 = new PdfPCell(new Paragraph("3"));
+	            PdfPCell admissionFee = new PdfPCell(new Paragraph("Admission Fee"));
+	            table.addCell(slNo3);
+	            table.addCell(admissionFee);
+	            
+	            for(int i=0; i< feeStructureDtoList.size() ;i++){
+	            	 PdfPCell cell = new PdfPCell(new Paragraph(feeStructureDtoList.get(i).getAdmission_fee()+""));
+	            	 table.addCell(cell);
+	            }
+	            
+	            PdfPCell slNo4 = new PdfPCell(new Paragraph("4"));
+	            PdfPCell examFee = new PdfPCell(new Paragraph("Examination Fee"));
+	            table.addCell(slNo4);
+	            table.addCell(examFee);
+	            
+	            for(int i=0; i< feeStructureDtoList.size() ;i++){
+	            	 PdfPCell cell = new PdfPCell(new Paragraph(feeStructureDtoList.get(i).getExam_fee()+""));
+	            	 table.addCell(cell);
+	            }
+	            
+	            
+	            PdfPCell slNo5 = new PdfPCell(new Paragraph("5"));
+	            PdfPCell tuitionFe = new PdfPCell(new Paragraph("Full Course Tuition Fee"));
+	            table.addCell(slNo5);
+	            table.addCell(tuitionFe);
+	            
+	            for(int i=0; i< feeStructureDtoList.size() ;i++){
+	            	 PdfPCell cell = new PdfPCell(new Paragraph(feeStructureDtoList.get(i).getTution_fee()+""));
+	            	 table.addCell(cell);
+	            }
+	            
+	            PdfPCell slNo6 = new PdfPCell(new Paragraph("6"));
+	            		
+	            PdfPCell devlpmnt = new PdfPCell(new Paragraph("Development Charge"));
+	            table.addCell(slNo6);
+	            table.addCell(devlpmnt);
+	            
+	            for(int i=0; i< feeStructureDtoList.size() ;i++){
+	            	 PdfPCell cell = new PdfPCell(new Paragraph(feeStructureDtoList.get(i).getDevelopment_fee()+""));
+	            	 table.addCell(cell);
+	            }
+	            
+	            
+	            
+	            PdfPCell slNo7 = new PdfPCell(new Paragraph("7"));
+        		
+	            PdfPCell misc = new PdfPCell(new Paragraph("Miscellaneous Charge "));
+	            table.addCell(slNo7);
+	            table.addCell(misc);
+	            
+	            for(int i=0; i< feeStructureDtoList.size() ;i++){
+	            	 PdfPCell cell = new PdfPCell(new Paragraph(feeStructureDtoList.get(i).getMisc_fee()+""));
+	            	 table.addCell(cell);
+	            }
+	            
+	            PdfPCell slNo8 = new PdfPCell(new Paragraph("8"));
+        		
+	            PdfPCell caution = new PdfPCell(new Paragraph("Caution Money"));
+	            table.addCell(slNo8);
+	            table.addCell(caution);
+	            
+	            for(int i=0; i< feeStructureDtoList.size() ;i++){
+	            	 PdfPCell cell = new PdfPCell(new Paragraph(feeStructureDtoList.get(i).getCaution_money()+""));
+	            	 table.addCell(cell);
+	            }
+	            
+	            PdfPCell slNo9 = new PdfPCell(new Paragraph("9"));
+        		
+	            PdfPCell poorBoyFund = new PdfPCell(new Paragraph("Poor Boy Fund"));
+	            table.addCell(slNo9);
+	            table.addCell(poorBoyFund);
+	            
+	            for(int i=0; i< feeStructureDtoList.size() ;i++){
+	            	 PdfPCell cell = new PdfPCell(new Paragraph(feeStructureDtoList.get(i).getPoor_boy_fund()+""));
+	            	 table.addCell(cell);
+	            }
+	            
+	            PdfPCell slNo10 = new PdfPCell(new Paragraph("10"));
+        		
+	            PdfPCell total = new PdfPCell(new Paragraph("Total"));
+	            table.addCell(slNo10);
+	            table.addCell(total);
+	            
+	            for(int i=0; i< feeStructureDtoList.size() ;i++ ){
+	            	 PdfPCell cell = new PdfPCell(new Paragraph(feeStructureDtoList.get(i).getTotal_fee()+""));
+	            	 table.addCell(cell);
+	            }
 	            
 	            document.add(table);
+	            Paragraph note1 = new Paragraph("There may be some changes above mentioned Fee.");
+	            note1.setSpacingBefore(10);
+	            document.add(note1);
+	            Paragraph note2 = new Paragraph("60% of caution money will be refunded within one year after result to those trainee who have completed successfully training. In any other cases full caution money will be forfeited.");
+	            document.add(note2);
 	            
-	            
-	            Paragraph receivedFrom = new Paragraph("                Received with thanks from             " + studentDto.getStudent_name());
-		           
-	            receivedFrom.setSpacingBefore(10);
-	            document.add(receivedFrom);
-	            
-	            Paragraph guardian = new Paragraph("                Son/Daughter/Gaurdian of              " + studentDto.getGuardian_name());
-		           
-	            guardian.setSpacingBefore(10);
-	            document.add(guardian);
-
-	            Paragraph roll_no = new Paragraph("                Roll No.#             " + "YYY" +"                Rupees      "+ NumToWordsUtil.convert((int)studentDto.getFee()) +"   Only" );
-		           
-	            roll_no.setSpacingBefore(10);
-	            document.add(roll_no);
-	           
-	            PdfPTable rsTable = new PdfPTable(1);
-	            PdfPCell cell00 = new PdfPCell(new Paragraph("Rs.    "+ (int)studentDto.getFee() + "/-"));
-	            cell00.setBorder(2);
-	            rsTable.addCell(cell00);
-	            rsTable.setSpacingBefore(20);
-	            document.add(rsTable);
-	            Paragraph signature = new Paragraph("                                                       																																										Authorized Singnatory ");
+	    	    Paragraph signature = new Paragraph("                                                       																																										Authorized Singnatory ");
 	            signature.setSpacingBefore(20);
 	            document.add(signature);
 	            document.close();
 	        } catch(Exception e){
-	e.printStackTrace();
+	        	e.printStackTrace();
 	        }
 
 

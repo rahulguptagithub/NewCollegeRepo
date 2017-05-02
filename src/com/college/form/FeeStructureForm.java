@@ -13,7 +13,7 @@ public class FeeStructureForm extends ValidatorActionForm{
 	private static final long serialVersionUID = 1L;
 	private String session;
 	private String trade;
-	private int duration;
+	private String duration;
 	private double admission_fee;
 	private double exam_fee;
 	private double tution_fee;
@@ -41,11 +41,13 @@ public class FeeStructureForm extends ValidatorActionForm{
 
 	
 
-	public int getDuration() {
+	
+
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(int duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 
@@ -109,7 +111,7 @@ public class FeeStructureForm extends ValidatorActionForm{
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 	 this.session = null;
 	 this.trade = null;
-	 this.duration= 0;
+	 this.duration= null;
 	 this.admission_fee =0.0;
 	 this.exam_fee = 0.0;
 	 this.tution_fee = 0.0;

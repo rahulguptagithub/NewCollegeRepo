@@ -63,6 +63,9 @@ public class Student {
 	@Column(name = "formNo")
 	private String  formNo;
 	
+	@Column(name = "collegeName")
+	private String  collegeName;
+	
 	@OneToMany(mappedBy="student")
 	@JoinColumn(name = "academicRecordsID")
 	private Set<AcademicRecords> academicRecords;
@@ -206,10 +209,18 @@ public class Student {
 	public void setSession(String session) {
 		this.session = session;
 	}
+	
+	
+	public String getCollegeName() {
+		return collegeName;
+	}
+	public void setCollegeName(String collegeName) {
+		this.collegeName = collegeName;
+	}
 	public Student(String sid, String trade, String student_name,
 			String guardian_type, String guardian_name, String occupation,
 			String dob, String category, String fileName, String admittedBy,
-			String admision_Date, double fee ,String due_date,String gender,String session,String formNo) {
+			String admision_Date, double fee ,String due_date,String gender,String session,String formNo , String  collegeName) {
 		super();
 		this.sid = sid;
 		this.trade = trade;
@@ -227,6 +238,7 @@ public class Student {
 		this.gender = gender;
 		this.session = session;
 		this.formNo = formNo;
+		this.collegeName= collegeName;
 	}
 	public Student() {
 		}

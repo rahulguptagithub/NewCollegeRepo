@@ -1,4 +1,5 @@
 package com.college.action;
+import java.io.FileOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -8,6 +9,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+
+
+
 
 
 
@@ -25,9 +30,11 @@ import com.college.persistence.AcademicRecords;
 import com.college.persistence.AddressInfo;
 import com.college.persistence.FeeStructure;
 import com.college.persistence.Student;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.pdf.PdfWriter;
 public class Test {
 // added by rahul gupta
-// addde by ramesh
 public static void main(String[] args) {//cmFtZXNoMTIzNA==
 	byte[] encodedBytes = Base64.encodeBase64("ramesh12345".getBytes());
 	System.out.println("encodedBytes " + new String(encodedBytes));
@@ -71,22 +78,31 @@ public static void main(String[] args) {//cmFtZXNoMTIzNA==
 	
 	/*s*/
 	
-	Transaction tx =null;
-	try {
-		
-		
-		SessionFactory sf = ConnectionUtil.getfactory();
-		Session session = sf.openSession();
-		tx = session.beginTransaction();
-//FeeStructure fee = new FeeStructure("2017-2019","fitter","ramesh","14-04-2017",1200,1500,2500,27000,1000,33200);
-//session.save(fee);
-		
-		tx.commit();
-		session.close();
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
+
+	/*
+	Document document = new Document();
+
+    try {
+        PdfWriter.getInstance(document,
+                new FileOutputStream("Image.pdf"));
+        document.open();
+
+        Image image1 = Image.getInstance("C:\\Ramesh\\logo-image.jpg");
+        document.add(image1);
+
+        
+            
+        document.close();
+
+    }catch(Exception e){
+    	
+    }*/
 	
+	//DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	DateFormat dateFormat2 = new SimpleDateFormat("DD-MM-yyyy");
+	//print(dateFormat.format(new Date()); // will print like 2014-02-20
+	//print(); // will print like 02-20-2014
+	System.out.println("current Date"+dateFormat2.format(new Date()));
 
 	//System.out.println("Report Date: " + new java.sql.Date(new Date().getTime()).toString());
 	}

@@ -1,4 +1,5 @@
 <%@taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
+<%-- 
 <html>
 <head>
 <!-- <style>
@@ -74,8 +75,8 @@ body {margin:0;}
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="index.jsp">Home</a>
-  <a href="ShowAbout.jsp">About Us</a>
+  <a href="jsp/ShowHomeDef.jsp">Home</a>
+  <a href="jsp/ShowAbout.jsp">About Us</a>
   <a href="index.jsp">Course</a>
   <a href="index.jsp">Result</a>
   <a href="index.jsp">Admission</a>
@@ -84,11 +85,6 @@ body {margin:0;}
   <a href="index.jsp">Placement</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
-
-<!-- <div style="padding-left:16px">
-  <h2>Responsive Topnav Example</h2>
-  <p>Resize the browser window to see how it works.</p>
-</div> -->
 
 <script>
 function myFunction() {
@@ -107,4 +103,56 @@ function myFunction() {
 
 <marquee bgcolor="#66CD00">Result of all stream has been announced kindly visit to Result section..</marquee>
 </body>
-</html>
+</html> --%>
+
+<div class="body-wrap">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </div>

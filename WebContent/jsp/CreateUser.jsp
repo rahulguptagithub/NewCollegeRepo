@@ -1,7 +1,7 @@
 
-<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
 
-<html>
+<%-- <html>
 <style>
 form {
     border: 3px solid #f1f1f1;
@@ -66,75 +66,117 @@ span.psw {
     }
 }
 </style>
-<body>
+<body> --%>
 
 <%-- <html:form action="/feeReceiptSubmit">
 <html:submit value="Create"></html:submit>
 </html:form> --%>
- 
- 
- 
- 
+
+
+
+
 
 <html:form action="/createSubmit">
-  <div class="container">
-  <table >
-  <caption><h2>New User Creation Window</h2></caption>
-  <tr>
-  <td>Enter User Name</td>
-  <td><html:text property="username"></html:text></td>
-  <td><font size="3" color="red"><html:errors property="username"/></font></td>
-  </tr>
- 
-  <tr>
-   <td>Enter Password</td>
-  <td><html:password property="password"></html:password></td>
-  <td><font size="3" color="red"><html:errors property="password"/></font></td>
-  </tr>
-  
-   <tr>
-   <td>Enter Confirm Password</td>
-   <td><html:text property="cpassword"></html:text></td>
-   <td><font size="3" color="red"><html:errors property="cpassword"/></font></td>
-  </tr>
-  
-  <tr>
-  <td>Enter Mobile No.</td>
-  <td><html:text property="mobileno"></html:text></td>
-  <td><font size="3" color="red"><html:errors property="mobileno"/></font></td>
-  </tr>
-  
-  <tr>
-  <td>Enter Email Id</td>
-  <td><html:text property="email"></html:text></td>
-  <td><font size="3" color="red"><html:errors property="email"/></font></td>
-  </tr>
-  
-  <tr>
-  <td>User Role</td>
-  <td><html:select property="role">
-  <html:option value="Select"></html:option>
-  <html:option value="Admin"></html:option>
-  <html:option value="User"></html:option>
-  <td><font size="3" color="red"><html:errors property="role"/></font></td>
-  </html:select></td>
-  </tr>
-  
-  <tr>
-  <td>User Status</td>
-  <td ><html:select property="status">
-  <html:option value="Select"></html:option>
-  <html:option value="Active"></html:option>
-  <html:option value="Inactive"></html:option>
-  <td><font size="3" color="red"><html:errors property="status"/></font></td>
-  </html:select></td>
-  </tr>
-  
-  <tr>
-  <td colspan="3"><html:submit value="Create"></html:submit></td>
-  </tr>
-  </table>
-  </div>
+	<div class="panel panel-danger">
+		<div class="panel-heading">
+			<b>New User Creation Window</b>
+		</div>
+		<div class="panel-body">
+			<div class="col-md-12">
+				<div class="col-md-6">
+					<div class="form-group">
+						<div>
+							<label>Enter User Name</label>
+							<html:text property="username" styleClass="form-control"></html:text>
+						</div>
+						<div>
+							<font size="3" color="red"><html:errors
+									property="username" /></font>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div>
+							<label>Enter Password</label>
+							<html:password property="password" styleClass="form-control"></html:password>
+						</div>
+						<div>
+							<font size="3" color="red"><html:errors
+									property="password" /></font>
+						</div>
+					</div>
+					<div class="form-group">
+						<div>
+							<label>Enter Confirm Password</label>
+							<html:text property="cpassword" styleClass="form-control"></html:text>
+						</div>
+						<div>
+							<font size="3" color="red"><html:errors
+									property="cpassword" /></font>
+						</div>
+					</div>
+					<div class="form-group">
+						<div>
+							<label>Status</label>
+							<html:select property="status" styleClass="form-control">
+								<html:option value="Select"></html:option>
+								<html:option value="Active"></html:option>
+								<html:option value="Inactive"></html:option>
+							</html:select>
+						</div>
+						<div>
+							<font size="3" color="red"><html:errors property="status" /></font>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div>
+							<label>Enter Email Id</label>
+							<html:text property="email" styleClass="form-control"></html:text>
+						</div>
+						<div>
+							<font size="3" color="red"><html:errors property="email" /></font>
+						</div>
+					</div>
+					<div class="form-group">
+						<div>
+							<label>Enter Mobile No.</label>
+							<html:text property="mobileno" styleClass="form-control"></html:text>
+						</div>
+						<div>
+							<font size="3" color="red"><html:errors
+									property="mobileno" /></font>
+						</div>
+					</div>
+					<div class="form-group">
+						<div>
+							<label>User Role</label>
+							<html:select property="role" styleClass="form-control">
+								<html:option value="Select"></html:option>
+								<html:option value="Admin"></html:option>
+								<html:option value="User"></html:option>
+							</html:select>
+						</div>
+						<div>
+							<font><html:errors property="role" /> </font>
+						</div>
+					</div>
+					<div class="form-group">
+					<label></label>
+						<div>
+						
+							<html:submit styleClass="btn btn-primary btn-block" value="Create"></html:submit>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
 </html:form>
- </body>
-</html>
+<%--  </body>
+</html> --%>
