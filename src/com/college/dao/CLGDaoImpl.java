@@ -91,7 +91,7 @@ public class CLGDaoImpl implements CLGDao{
 		boolean flag = false;
 		Transaction tx =null;
 		try {
-			DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			String date =dateFormat.format(new Date());
 			byte[] encodedBytes = Base64.encodeBase64(userForm.getPassword().getBytes());
 			SessionFactory sf = ConnectionUtil.getfactory();
@@ -178,7 +178,7 @@ public class CLGDaoImpl implements CLGDao{
 		String sid= null;
 		try {
 			/*String date =(new java.sql.Date(new Date().getTime())).toString();*/
-			DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			String date =dateFormat.format(new Date());
 			SessionFactory sf = ConnectionUtil.getfactory();
 			Session session = sf.openSession();
@@ -241,7 +241,7 @@ public class CLGDaoImpl implements CLGDao{
 		Transaction tx =null;
 		try {
 			//String date =(new java.sql.Date(new Date().getTime())).toString();
-			DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			String date =dateFormat.format(new Date());
 			SessionFactory sf = ConnectionUtil.getfactory();
 			Session session = sf.openSession();
@@ -265,7 +265,7 @@ public class CLGDaoImpl implements CLGDao{
 		Transaction tx =null;
 		try {
 			//String date =(new java.sql.Date(new Date().getTime())).toString();
-			DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			String date =dateFormat.format(new Date());
 			SessionFactory sf = ConnectionUtil.getfactory();
 			Session session = sf.openSession();
@@ -285,7 +285,7 @@ public class CLGDaoImpl implements CLGDao{
 		boolean flag = false;
 		Transaction tx =null;
 			//String date =(new java.sql.Date(new Date().getTime())).toString();
-		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		String date =dateFormat.format(new Date());
 			SessionFactory sf = ConnectionUtil.getfactory();
 			Session session = sf.openSession();
@@ -339,7 +339,7 @@ public class CLGDaoImpl implements CLGDao{
 		boolean flag=false;
 		Transaction tx =null;
 		//String date =(new java.sql.Date(new Date().getTime())).toString();
-		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		String date =dateFormat.format(new Date());
 		SessionFactory sf = ConnectionUtil.getfactory();
 		Session session = sf.openSession();
@@ -383,7 +383,7 @@ public class CLGDaoImpl implements CLGDao{
 			SessionFactory sf = ConnectionUtil.getfactory();
 			Session session = sf.openSession();
 			tx = session.beginTransaction();
-			DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			String date =dateFormat.format(new Date());
 			//String created_date =(new java.sql.Date(new Date().getTime())).toString();
 			AdmissionForm admissionForm = new AdmissionForm(date, userName, "Active","MTPJPL");
@@ -476,7 +476,7 @@ public class CLGDaoImpl implements CLGDao{
 		dbSession.close();
 
 		
-		return null;
+		return accountDtolist;
 		
 	}
 }

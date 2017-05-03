@@ -25,12 +25,17 @@ public class UserCreditAccountAction extends Action{
 		DisplayTransactionForm displayTransactionForm = (DisplayTransactionForm)form;
 		String startDate = displayTransactionForm.getFromDate();
 		String endDate = displayTransactionForm.getToDate();
+		System.out.println("startDate"+ startDate);
+		System.out.println("endDate"+ endDate);
 		String accountHolder = displayTransactionForm.getAccountHolder();
 		CLGDao cLGDao = new CLGDaoImpl();
 		List<AccountDto> accountDtoList =cLGDao.showUserCreditAccountByDate(accountHolder ,  startDate , endDate);
 		if(accountDtoList !=null){
 			result="success";
+			request.getSession().setAttribute("ADL", accountDtoList);
 		}
+		
+		System.out.println("returning with "+ result);
 		return mapping.findForward(result);
 	}
 

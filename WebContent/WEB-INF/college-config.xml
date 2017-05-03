@@ -17,6 +17,14 @@
 <form-bean name="transferForm" type="com.college.form.TransferForm"/>
 <form-bean name="generateAdmissionForm" type="org.apache.struts.validator.DynaValidatorForm">
 </form-bean>
+
+<form-bean name="reportForm" type="org.apache.struts.validator.DynaValidatorForm">
+<form-property name="mCreditAmount" type="java.lang.Double"/>
+<form-property name="mDebitAmount" type="java.lang.Double"/>
+<form-property name="mNoteAgainst" type="java.lang.String"/>
+<form-property name="mTxDate" type="java.lang.String"/>
+</form-bean>
+
 <form-bean name="downloadAdmissionForm" type="org.apache.struts.validator.DynaValidatorForm">
 <form-property name="filename" type="java.lang.String"/>
 </form-bean>
@@ -125,7 +133,13 @@
 </action>
 
 <action path="/transactionSubmit" name="displayTransactionForm" type="com.college.action.UserCreditAccountAction" input="/jsp/ShowTransaction.jsp" scope="session">
-<forward name="success" path="/jsp/Transaction.jsp"/>
+<exception key="error.record.notfound" type="com.college.exception.RecordNotFountException"></exception>
+<forward name="success" path="/jsp/ShowTransactionResult.jsp"/>
+<forward name="fail" path="/jsp/ShowTransaction.jsp"/>
+</action>
+
+<action path="/reportSubmit" name="reportForm" type="com.college.action.ReportAction" input="/jsp/ShowTransactionResult.jsp" scope="session">
+<forward name="success" path="/jsp/ShowTransactionResult.jsp"/>
 <forward name="fail" path="/jsp/ShowTransaction.jsp"/>
 </action>
 

@@ -99,7 +99,7 @@ public static void main(String[] args) {//cmFtZXNoMTIzNA==
     }*/
 	
 	//DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	DateFormat dateFormat2 = new SimpleDateFormat("DD-MM-yyyy");
+	DateFormat dateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
 	//print(dateFormat.format(new Date()); // will print like 2014-02-20
 	//print(); // will print like 02-20-2014
 	System.out.println("current Date"+dateFormat2.format(new Date()));

@@ -23,9 +23,9 @@
 				<div class="form-group">
 					<label for="fname" class="text-primary">From Date</label>
 					<div class="controls input-append date form_date" data-date=""
-						data-date-format="dd MM yyyy" data-link-field="dtp_input2"
+						data-date-format="dd MM yyyy" data-link-field="dtp_input1"
 						data-link-format="dd-mm-yyyy">
-						<html:text property="fromDate" size="16" styleId="dtp_input2"
+						<html:text property="fromDate" size="16" styleId="dtp_input1"
 							styleClass="form-control" readonly="true"></html:text>
 						<span class="add-on"><i class="icon-th"></i></span>
 					</div>
