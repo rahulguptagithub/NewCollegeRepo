@@ -3,7 +3,7 @@
 <html:form action="/transactionSubmit" method="post">
 	<div class="panel panel-danger">
 		<div class="panel-heading">
-			<b class="text-primary">Expense Window</b>
+			<b class="text-primary">Show Transaction Window</b>
 		</div>
 		<div class="panel-body">
 

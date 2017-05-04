@@ -39,9 +39,9 @@
 	</div>
 	
 	
-		<div class="col-md-12">
+	<%-- 	<div class="col-md-12">
 		<tiles:insert attribute="FOOTER" />
-	</div>
+	</div> --%>
 	<script type="text/javascript">
 		$('ul.nav li.dropdown').hover(
 				function() {

@@ -3,11 +3,15 @@ package com.college.pdf.generator;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
 
+import com.college.dto.AccountDto;
 import com.college.dto.FeeStructureDto;
 import com.college.dto.StudentDto;
 import com.college.util.NumToWordsUtil;
@@ -17,6 +21,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -53,7 +58,7 @@ public class PDFGenerator {
             address.setAlignment(Element.ALIGN_CENTER);
             document.add(address);
             
-            PdfPTable table = new PdfPTable(4); // 3 columns.
+            PdfPTable table = new PdfPTable(4); // 4 columns.
             table.setSpacingBefore(25);
             PdfPCell cell11 = new PdfPCell(new Paragraph("Receipt No.#"));
             PdfPCell cell12 = new PdfPCell(new Paragraph(receipt_no));
@@ -465,5 +470,88 @@ e.printStackTrace();
 				return fileName;
 
 	
+	}
+	
+	public static String generateVoucher(List<AccountDto> accountDtoList , ServletContext ctx ,String txIds []){
+		 List<String> txIdList = Arrays.asList(txIds); 
+		Document document = new Document();
+		String fileName ="voucher_"+accountDtoList.get(0).getAcHolder()+".pdf";
+		String filePath = ctx.getRealPath("/")+"Voucher";
+		File folder = new File(filePath);
+	    if(!folder.exists()){
+		folder.mkdir();
+		}
+	    File newFile = new File(filePath,fileName );
+	    try{
+	    	PdfWriter.getInstance(document, new FileOutputStream(newFile));
+            document.open();
+            Paragraph space = new Paragraph ("");
+            document.add(space);
+            Font ft= new Font();
+    	    ft.setSize(18);
+    	    Chunk heading = new Chunk("                            MAHARANA PRATAP Pvt. ITI");
+    	   // heading.setUnderline(0.2f, -2f);
+    	    heading.setFont(ft);
+    	    
+    	    document.add(heading);
+    	    
+    	    document.add(space);
+    	    Chunk blank2 =new Chunk("                                              ");
+    	    document.add(blank2);
+    	    Font f1t= new Font();
+    	    f1t.setSize(15);
+    	    Chunk address = new Chunk(" Chiraiya Khar,Japla(Jharkhand)");
+    	    address.setFont(f1t);
+    	    document.add(address);
+    	    
+    	    
+            Paragraph title = new Paragraph("                                                               Expense Voucher");
+            title.setSpacingBefore(5);
+            title.setSpacingBefore(5);
+            document.add(title);
+           
+            PdfPTable table = new PdfPTable(8); // 8 columns.
+            
+           table.setSpacingBefore(25);
+           DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+           String date = dateFormat.format(new Date());
+           PdfPCell dateCell = new PdfPCell(new Paragraph("Date : "+ date));
+           dateCell.setColspan(2);
+           PdfPCell particularsCell = new PdfPCell(new Paragraph("Particulars"));
+           particularsCell.setColspan(6);
+           particularsCell.setPaddingLeft(75);
+           table.addCell(dateCell);
+           table.addCell(particularsCell);
+           double totalExpense = 0.0;
+           int sequenceNo =1;
+            for(AccountDto accountDto: accountDtoList){
+            	if(txIdList.contains(accountDto.getTxId()+"")){
+            		totalExpense+= accountDto.getDebitAmount();
+            		PdfPCell slNoCell = new PdfPCell(new Paragraph(""+sequenceNo+"."));
+            		slNoCell.setPaddingLeft(20);
+                     PdfPCell descriptionCell = new PdfPCell(new Paragraph("Being expense against "+accountDto.getNoteAgainst()));
+                     descriptionCell.setColspan(6);
+                     descriptionCell.setBorder(Rectangle.NO_BORDER);
+                     PdfPCell expenseAmount = new PdfPCell(new Paragraph(""+accountDto.getDebitAmount()));
+                     table.addCell(slNoCell);
+                     table.addCell(descriptionCell);
+                     table.addCell(expenseAmount);
+            	}
+            	sequenceNo++;
+            }
+            PdfPCell totalCell = new PdfPCell(new Paragraph("Total Expense INR "));
+            totalCell.setColspan(7);
+            totalCell.setPaddingLeft(200);
+            PdfPCell sum = new PdfPCell(new Paragraph(""+totalExpense));
+            table.addCell(totalCell);
+            table.addCell(sum);
+         
+            //table.getDefaultCell().setBorder(Rectangle.NO_BORDER);
+            document.add(table);
+            document.close();
+	    }catch(Exception e){
+	    	e.printStackTrace();
+	    }
+		return fileName;
 	}
 }
