@@ -41,6 +41,11 @@
 </form-bean>
 <form-bean name="displayTransactionForm" type="com.college.form.DisplayTransactionForm"/>
 
+<form-bean name="staffEntrySubmitValidationForm" type="com.college.form.StaffEntrySubmitValidationForm">
+</form-bean>
+
+<form-bean name="studentSubmitEnquiryValidationForm" type="com.college.form.StudentSubmitEnquiryValidationForm">
+</form-bean>
 </form-beans>  
                    
 <global-exceptions>
@@ -60,7 +65,8 @@
 <forward name="generateAdmissionForm" path="/jsp/ShowGenerateAdmissionForm.jsp"></forward>
 <forward name="generateFeeStructure" path="/jsp/ShowGenerateFeeStructureForm.jsp"></forward>
 <forward name="displayTransaction" path="/jsp/ShowTransaction.jsp"></forward>
-
+<forward name="staffEntry" path="/jsp/ShowStaffEntry.jsp"></forward>
+<forward name="collegeEnquiry" path="/jsp/ShowCollegeEnquiry.jsp"></forward>
 </global-forwards>
 
 
@@ -143,6 +149,19 @@
 <action path="/reportSubmit" name="reportForm" type="com.college.action.ReportAction" input="/jsp/ShowTransactionResult.jsp" scope="session">
 
 </action>
+
+
+<action path="/staffEntrySubmit" name="staffEntrySubmitValidationForm" type="com.college.action.StaffEntryAction" input="/jsp/ShowStaffEntry.jsp" scope="session">
+<forward name="success" path="/jsp/ShowSucess.jsp"/>
+<forward name="fail" path="/jsp/ShowStaffEntry.jsp"/>
+</action>
+
+<action path="/SubmitStudentEnquiry" name="studentSubmitEnquiryValidationForm" 
+	type="com.college.action.CollegeAction" scope="session" 
+	parameter="method" input="/jsp/ShowCollegeEnquiry.jsp">
+	<forward name="success" path="/jsp/ShowSucess.jsp"/>
+	<forward name="fail" path="/jsp/ShowCollegeEnquiry.jsp"/>
+	</action>
 
 </action-mappings>
 

@@ -1,34 +1,5 @@
 <%@taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
 <%@taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%-- 
-<html>
-<head>
-<style>
-.button {
-	background-color: #4CAF50; /* Green */
-	border: none;
-	color: white;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin: 4px 2px;
-	cursor: pointer;
-	width: 80%;
-}
-
-.button a {
-	text-decoration: none;
-}
-
-.button2 {
-	padding: 12px 28px;
-}
-</style>
-
-</head>
-<body>
- --%>
  <table>
 	<tr>
 		<td><h4>
@@ -83,7 +54,15 @@
 			</h4></td>
 	</tr>
 
-</table>
+<tr>
+		<td><h4>
+					<html:link styleClass="btn btn-primary btn-block" forward="staffEntry">Staff Entry</html:link>
+			</h4></td>
+	</tr>
 
-<%-- </body>
-</html> --%>
+<tr>
+		<td><h4>
+					<html:link styleClass="btn btn-primary btn-block" forward="collegeEnquiry">College Enquiry</html:link>
+			</h4></td>
+	</tr>
+</table>

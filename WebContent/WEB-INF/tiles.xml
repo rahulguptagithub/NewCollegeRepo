@@ -104,5 +104,15 @@
 <put name ="BODY" value = "/jsp/Transaction.jsp"/>
 <put name ="LMENU" value = "/jsp/home1.jsp"/>
 </definition>
-ShowTransactionResult
+
+<definition name="ShowStaffEntry" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/StaffEntry.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="ShowCollegeEnquiry" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/StudentEnquiry.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
 </tiles-definitions>

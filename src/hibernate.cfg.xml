@@ -10,7 +10,7 @@
 		<property name="connection.url">jdbc:mysql://localhost:3306/institute
 		</property>
 		<property name="connection.username">root</property>
-		<property name="connection.password">ramesh</property>
+		<property name="connection.password">mylove2013</property>
 		<!-- <property name="cache.provider_class">
 			org.hibernate.cache.HashtableCacheProvider</property>
 		<property name="transaction.factory_class">
@@ -27,7 +27,7 @@
 		<mapping class="com.college.persistence.Account" />
 		<mapping class="com.college.persistence.User" />
 		<mapping class="com.college.persistence.AdmissionForm" />
-		
-		
+		<mapping class="com.college.persistence.StaffEntry" />
+		<mapping class="com.college.persistence.StudentEnquiry" />
 	</session-factory>
 </hibernate-configuration>
