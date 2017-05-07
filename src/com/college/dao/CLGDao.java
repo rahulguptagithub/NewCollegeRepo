@@ -35,4 +35,5 @@ public interface CLGDao {
 	public int  generateAdmissionForm(String userName);
 	public List<FeeStructureDto> fetchFeeStructureDetail(String trade, String session , ServletContext ctx )throws RecordNotFountException;
 	public List<AccountDto> showUserCreditAccountByDate(String userName , String startDate , String endDate)throws RecordNotFountException;
+	public List<AccountDto> showTransaction(String accountHolder , String startDate , String endDate) throws RecordNotFountException;  
 }

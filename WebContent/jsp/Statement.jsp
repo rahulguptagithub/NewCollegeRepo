@@ -1,9 +1,9 @@
 <%@taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
 
-<html:form action="/transactionSubmit" method="post">
+<html:form action="/statementSubmit" method="post">
 	<div class="panel panel-danger">
 		<div class="panel-heading">
-			<b class="text-primary">Show Transaction Window</b>
+			<b class="text-primary">Show Statement Window</b>
 		</div>
 		<div class="panel-body">
 
@@ -13,8 +13,8 @@
 					<div>
 						<label for="fname" class="text-primary">Select Account Holder</label>
 						<html:select property="accountHolder" styleClass="form-control">
-							<html:option value="0">Select Account</html:option>
-							<html:optionsCollection name="displayTransactionForm"
+							<html:option value="All">All Accounts</html:option>
+							<html:optionsCollection name="statementForm"
 								property="accountOptions" />
 						</html:select>
 					</div>

@@ -12,9 +12,8 @@ import org.apache.struts.validator.ValidatorForm;
 import com.college.dao.CLGDao;
 import com.college.dao.CLGDaoImpl;
 
-public class DisplayTransactionForm extends ValidatorForm{
+public class TransactionForm extends ValidatorForm{
 
-	
 	/**
 	 * @author Ramesh
 	 */
@@ -61,4 +60,5 @@ public class DisplayTransactionForm extends ValidatorForm{
 		this.toDate=null;
 		
 	}
+
 }

@@ -1,34 +1,5 @@
 <%@taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
 <%@taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%-- 
-<html>
-<head>
-<style>
-.button {
-	background-color: #4CAF50; /* Green */
-	border: none;
-	color: white;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin: 4px 2px;
-	cursor: pointer;
-	width: 80%;
-}
-
-.button a {
-	text-decoration: none;
-}
-
-.button2 {
-	padding: 12px 28px;
-}
-</style>
-
-</head>
-<body>
- --%>
  <table>
 	<tr>
 		<td><h4>
@@ -79,11 +50,14 @@
 	
 	<tr>
 		<td><h4>
-					<html:link styleClass="btn btn-primary btn-block" forward="displayTransaction">Show Transaction</html:link>
+					<html:link styleClass="btn btn-primary btn-block" forward="displayTransaction">Debit/Credit Voucher</html:link>
+			</h4></td>
+	</tr>
+	
+	<tr>
+		<td><h4>
+					<html:link styleClass="btn btn-primary btn-block" forward="displayStatement">Statement</html:link>
 			</h4></td>
 	</tr>
 
 </table>
-
-<%-- </body>
-</html> --%>

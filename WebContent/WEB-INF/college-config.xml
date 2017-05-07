@@ -40,6 +40,18 @@
 <form-property name="session" type="java.lang.String"/>
 </form-bean>
 <form-bean name="displayTransactionForm" type="com.college.form.DisplayTransactionForm"/>
+<form-bean name="statementForm" type="com.college.form.TransactionForm"/>
+
+<form-bean name="statementResultForm" type="org.apache.struts.validator.DynaValidatorForm">
+<form-property name="mCreditAmount" type="java.lang.Double"/>
+<form-property name="mDebitAmount" type="java.lang.Double"/>
+<form-property name="mNoteAgainst" type="java.lang.String"/>
+<form-property name="mTxDate" type="java.lang.String"/>
+<form-property name="mTxId" type="java.lang.String[]"/>
+<form-property name="macHolder" type="java.lang.String"/>
+
+
+</form-bean>
 
 </form-beans>  
                    
@@ -60,6 +72,7 @@
 <forward name="generateAdmissionForm" path="/jsp/ShowGenerateAdmissionForm.jsp"></forward>
 <forward name="generateFeeStructure" path="/jsp/ShowGenerateFeeStructureForm.jsp"></forward>
 <forward name="displayTransaction" path="/jsp/ShowTransaction.jsp"></forward>
+<forward name="displayStatement" path="/jsp/ShowDisplayStatement.jsp"></forward>
 
 </global-forwards>
 
@@ -135,14 +148,27 @@
 </action>
 
 <action path="/transactionSubmit" name="displayTransactionForm" type="com.college.action.UserCreditAccountAction" input="/jsp/ShowTransaction.jsp" scope="session">
-<exception key="error.record.notfound" type="com.college.exception.RecordNotFountException"></exception>
+
 <forward name="success" path="/jsp/ShowTransactionResult.jsp"/>
 <forward name="fail" path="/jsp/ShowTransaction.jsp"/>
 </action>
 
-<action path="/reportSubmit" name="reportForm" type="com.college.action.ReportAction" input="/jsp/ShowTransactionResult.jsp" scope="session">
-
+<action path="/reportSubmit" name="reportForm" type="com.college.action.VoucherReportDownloadAction" input="/jsp/ShowTransactionResult.jsp" scope="session">
+<exception key="error.record.notselected" type="com.college.exception.RecordNotFountException"></exception>
 </action>
+
+<action path="/statementSubmit" name="statementForm" type="com.college.action.StatementAction" input="/jsp/ShowDisplayStatement.jsp" scope="session">
+ 
+<forward name="success" path="/jsp/ShowStatementResult.jsp"/>
+<forward name="fail" path="/jsp/ShowTransaction.jsp"/>
+</action>
+
+<action path="/transactionResultSubmit" name="statementResultForm" type="com.college.action.StatementDownloadAction" input="/jsp/ShowStatementResult.jsp" scope="session">
+ 
+<forward name="success" path="/jsp/ShowStatementResult.jsp"/>
+<forward name="fail" path="/jsp/ShowTransaction.jsp"/>
+</action>
+
 
 </action-mappings>
 

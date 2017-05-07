@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -22,6 +23,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import com.college.constants.CollegeConstants;
 import com.college.dto.AcademicRecordsDto;
 import com.college.dto.AccountDto;
 import com.college.dto.AddressInfoDto;
@@ -447,18 +449,18 @@ public class CLGDaoImpl implements CLGDao{
 		Session dbSession = sf.openSession();
 		tx = dbSession.beginTransaction();
 		
-		String queryString = "from Account ac where ac.updated_date>=? and ac.updated_date<=?";
+		String queryString = "from Account ac where ac.updated_date>=? and ac.updated_date<=? and ac.acHolder=?";
 		Query query = dbSession.createQuery(queryString);
 		query.setParameter(0, startDate);
 		query.setParameter(1,endDate );
-		
+		query.setParameter(2,userName );
 		if(query.list() != null && query.list().size()>0){
 			System.out.println("inside of condition........");
 			List<Account> accountList = query.list();
 			accountDtolist = new ArrayList<AccountDto>();
 			for(Account account: accountList){
 				AccountDto accontDto = new AccountDto();
-				accontDto.setAcHolder(accontDto.getAcHolder());
+				accontDto.setAcHolder(account.getAcHolder());
 				accontDto.setCollegeName(account.getCollegeName());
 				accontDto.setCreditAmount(account.getCreditAmount());
 				accontDto.setDebitAmount(account.getDebitAmount());
@@ -479,4 +481,54 @@ public class CLGDaoImpl implements CLGDao{
 		return accountDtolist;
 		
 	}
+	
+public List<AccountDto> showTransaction(String accountHolder , String startDate , String endDate) throws RecordNotFountException{
+	String queryString = null;
+		List<AccountDto> accountDtolist = null;
+		Transaction tx = null;
+		Query query = null;
+		SessionFactory sf = ConnectionUtil.getfactory();
+		Session dbSession = sf.openSession();
+		tx = dbSession.beginTransaction();
+		if(CollegeConstants.All_USER.equalsIgnoreCase(accountHolder)){
+			queryString = "from Account ac where ac.updated_date>=? and ac.updated_date<=?";	
+			query = dbSession.createQuery(queryString);
+			query.setParameter(0, startDate);
+			query.setParameter(1,endDate );
+		}else{
+			queryString = "from Account ac where ac.updated_date>=? and ac.updated_date<=? and ac.acHolder=?";
+			query = dbSession.createQuery(queryString);
+			query.setParameter(0, startDate);
+			query.setParameter(1, endDate );
+			query.setParameter(2, accountHolder );
+		}
+		
+		if(query.list() != null && query.list().size()>0){
+			System.out.println("inside of condition........");
+			List<Account> accountList = query.list();
+			accountDtolist = new ArrayList<AccountDto>();
+			for(Account account: accountList){
+				AccountDto accontDto = new AccountDto();
+				accontDto.setAcHolder(account.getAcHolder());
+				accontDto.setCollegeName(account.getCollegeName());
+				accontDto.setCreditAmount(account.getCreditAmount());
+				accontDto.setDebitAmount(account.getDebitAmount());
+				accontDto.setNoteAgainst(account.getNoteAgainst());
+				accontDto.setTxDate(account.getTxDate());
+				accontDto.setTxId(account.getTxId());
+				accontDto.setUpdated_by(account.getUpdated_by());
+				accontDto.setUpdated_date(account.getUpdated_date());
+				accountDtolist.add(accontDto);
+			}
+		}else{
+			throw new RecordNotFountException();
+		}
+		tx.commit();
+		dbSession.close();
+
+		Collections.sort(accountDtolist);
+		return accountDtolist;
+		
+	}
+
 }
