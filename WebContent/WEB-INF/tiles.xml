@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "tiles-config_1_1.dtd" >
+
+<tiles-definitions>
+<definition name="BaseDef1" path="/jsp/Layout.jsp">
+<put name ="LOGO" value = "/jsp/logo.jsp"/>
+<put name ="NAME" value = "/jsp/CollegeName.jsp"/>
+<put name ="HMENU" value = "/jsp/HorizantalMenu.jsp"/>
+<put name ="LMENU" value = "/jsp/Lmenu.jsp"/>
+<put name ="BODY" value = ""/>
+<put name ="FOOTER" value = "/jsp/Footer.jsp"/>
+</definition>
+
+<definition name="ShowAboutDef" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/About.jsp"/>
+</definition>
+
+
+<definition name="HomeDef" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/Welcome.jsp"/>
+</definition>
+
+<definition name="HomeDef1" extends="BaseDef1">
+
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="ShowCreateUser" extends="BaseDef1">
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+<put name ="BODY" value = "/jsp/CreateUser.jsp"/>
+</definition>
+
+<definition name="ShowSucess" extends="BaseDef1">
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+<put name ="BODY" value = "/jsp/Sucess.jsp"/>
+</definition>
+
+<definition name="ShowForgotPassword" extends="BaseDef1">
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+<put name ="BODY" value = "/jsp/ForgotPassword.jsp"/>
+</definition>
+
+<definition name="ShowAdmission" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/Admission.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="ShowAdmissionConf" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/AdmissionConf.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+				
+<definition name="ShowFeeSructure" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/FeeSructure.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="ShowFeePayment" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/FeePayment.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="ShowExpense" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/Expense.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+
+<definition name="ShowCredit" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/Credit.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="Showtransfer" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/Transfer.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="ShowGenerateAdmissionForm" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/GenerateAdmissionForm.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+<definition name="ShowFormGeneratedConf" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/AdmissionFormGenerated.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="ShowGenerateFeeStructure" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/GenerateFeeStructure.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="ShowFeeStructureGeneratedConf" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/FeeStructureGenereted.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="ShowTransaction" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/DisplayTransaction.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="ShowTransactionResult" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/Transaction.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+
+<definition name="ShowStaffEntry" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/StaffEntry.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="ShowCollegeEnquiry" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/StudentEnquiry.jsp"/>
+
+<definition name="ShowStatement" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/Statement.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+<definition name="ShowStatementResult" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/StatementResult.jsp"/>
+
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
+
+</tiles-definitions>
