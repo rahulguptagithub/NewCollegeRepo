@@ -13,7 +13,7 @@
 			</div>
 		</div>
 		<div class="panel-body">
-			<!-- <div class="col-md-12"> -->
+			
 				<html:errors />
 				
 				<div class="row">
@@ -31,7 +31,7 @@
 <div class="row" >
   <div class="col-md-1"><label for="fname" class="text-primary" ><%=slNo++ %></label></div>
   <div class="col-md-1"><html:checkbox property="mTxId" value="${adto.txId}"
-							styleClass="form-control" /></div>
+							styleClass="checkbox-inline" /></div>
   <div class="col-md-2"><html:text property="mCreditAmount" value="${adto.creditAmount}"
 							readonly="true" styleClass="form-control" /></div>
   <div class="col-md-2"><html:text property="mDebitAmount" value="${adto.debitAmount}"

@@ -2,33 +2,29 @@
 	<div class="col-md-3">
 		<div style="margin-left: 5px; margin-right: 10px">
 			<p class="media">
-				<img src="img.jpg" style="width: 60%">
+				<img src="principal.jpg" style="width: 60%">
 			</p>
 			<p>
-				<b>Smart Enterprise Processes</b>
+				<b>Principal Desk</b>
 			</p>
 			<div>
 			<p class="text-justify" style="line-height: 1.5">We specialise in
 				developing and implementing complex processes-employing granular
-				data analysis, sophisticated diagnostics and cross functional
-				benchmark. Supporting high volumes while reducing processing times,
-				increasing accuracy, and protecting against data or document loss.</p>
+				data analysis, sophisticated.</p>
 				</div>
 		</div>
 	</div>
 	<div class="col-md-3">
 		<div style="margin-left: 5px; margin-right: 10px">
 			<p class="media">
-				<img src="img.jpg" style="width: 60%">
+				<img src="a.jpg" style="width: 60%">
 			</p>
 			<p>
-				<b>Smart Enterprise Processes</b>
+				<b>Joint Secretary</b>
 			</p>
 			<p class="text-justify" style="line-height: 1.5">We specialise in
 				developing and implementing complex processes-employing granular
-				data analysis, sophisticated diagnostics and cross functional
-				benchmark. Supporting high volumes while reducing processing times,
-				increasing accuracy, and protecting against data or document loss.</p>
+				data analysis, sophisticated</p>
 		</div>
 	</div>
 
@@ -42,9 +38,7 @@
 			</p>
 			<p class="text-justify" style="line-height: 1.5">We specialise in
 				developing and implementing complex processes-employing granular
-				data analysis, sophisticated diagnostics and cross functional
-				benchmark. Supporting high volumes while reducing processing times,
-				increasing accuracy, and protecting against data or document loss.</p>
+				data analysis, sophisticated </p>
 		</div>
 	</div>
 	<div class="col-md-3">
@@ -57,9 +51,7 @@
 			</p>
 			<p class="text-justify" style="line-height: 1.5">We specialise in
 				developing and implementing complex processes-employing granular
-				data analysis, sophisticated diagnostics and cross functional
-				benchmark. Supporting high volumes while reducing processing times,
-				increasing accuracy, and protecting against data or document loss.</p>
+				data analysis, sophisticated </p>
 		</div>
 	</div>
 </div>

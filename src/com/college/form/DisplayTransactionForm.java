@@ -59,5 +59,6 @@ public class DisplayTransactionForm extends ValidatorForm{
 		this.accountHolder = null;
 		this.fromDate = null;
 		this.toDate=null;
+		
 	}
 }

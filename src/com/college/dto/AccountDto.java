@@ -1,8 +1,10 @@
 package com.college.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
 
-public class AccountDto implements Serializable{
+public class AccountDto implements Serializable,Comparable{
 	
 	/**
 	 * @author Ramesh
@@ -89,6 +91,30 @@ public class AccountDto implements Serializable{
 		this.collegeName = collegeName;
 	}
 
-	
-
+	@Override
+	public String toString() {
+		return this.acHolder;
+	}
+	@Override
+	public int compareTo(Object obj) {
+		AccountDto accountDto = (AccountDto)obj;
+		return this.acHolder.compareTo(accountDto.acHolder);
+	}
+	/*public static void main(String[] args) {
+		ArrayList<AccountDto> accountDtolist = new ArrayList<AccountDto>();
+		AccountDto accountDto1 =new AccountDto ();
+		accountDto1.setAcHolder("ramesh");
+		AccountDto accountDto2 =new AccountDto ();
+		accountDto2.setAcHolder("kishore");
+		AccountDto accountDto3 =new AccountDto ();
+		accountDto3.setAcHolder("ramesh");
+		AccountDto accountDto4 =new AccountDto ();
+		accountDto4.setAcHolder("dulhawa");
+		accountDtolist.add(accountDto1);
+		accountDtolist.add(accountDto2);
+		accountDtolist.add(accountDto3);
+		accountDtolist.add(accountDto4);
+		Collections.sort(accountDtolist);
+		System.out.println(accountDtolist);
+	}*/
 }

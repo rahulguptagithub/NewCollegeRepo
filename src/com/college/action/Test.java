@@ -36,7 +36,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class Test {
 // added by rahul gupta
 public static void main(String[] args) {//cmFtZXNoMTIzNA==
-	byte[] encodedBytes = Base64.encodeBase64("ramesh12345".getBytes());
+	byte[] encodedBytes = Base64.encodeBase64("mylove2013".getBytes());
 	System.out.println("encodedBytes " + new String(encodedBytes));
 	
 	/*byte[] decodedBytes = Base64.decodeBase64(encodedBytes);
