@@ -113,6 +113,8 @@
 
 <definition name="ShowCollegeEnquiry" extends="BaseDef1">
 <put name ="BODY" value = "/jsp/StudentEnquiry.jsp"/>
+<put name ="LMENU" value = "/jsp/home1.jsp"/>
+</definition>
 
 <definition name="ShowStatement" extends="BaseDef1">
 <put name ="BODY" value = "/jsp/Statement.jsp"/>
@@ -121,7 +123,6 @@
 
 <definition name="ShowStatementResult" extends="BaseDef1">
 <put name ="BODY" value = "/jsp/StatementResult.jsp"/>
-
 <put name ="LMENU" value = "/jsp/home1.jsp"/>
 </definition>
 
