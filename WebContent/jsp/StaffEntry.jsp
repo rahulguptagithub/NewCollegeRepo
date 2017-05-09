@@ -1,91 +1,130 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
 
+<html:form action="/staffEntrySubmit" method="post">
+	<div class="panel panel-danger">
+		<div class="panel-heading">
+			<div>
+				<b class="text-primary">Student Enquiry Window</b>
+			</div>
+		</div>
 
-<html>
-<body>
-	<br>
-	<br>
-	<center>
-		<h1>Student Enquiry Window</h1>
-		<html:form action="/staffEntrySubmit" method="post">
-			<table style="font-size: 25">
-				<tr>
-					<td>Name</td>
-					<td><html:text property="name" /></td>
-					
-					<td><html:errors property="name" /></td>
-				</tr>
+		<div class="panel-body">
 
-				<tr>
-					<td>Email</td>
-					<td><html:text property="email" /></td>
-					<td><html:errors property="email" /></td>
-				</tr>
+			<div class="col-md-12">
+				<html:errors />
+				<div class="form-group">
 
-				<tr>
-					<td>Phone Number</td>
-					<td><html:text property="phonenumber" /></td>
-					<td><html:errors property="phonenumber" /></td>
-				</tr>
-				
-				<tr>
-					<td>Gender</td>
-					<td><html:radio property="gender" value="Male">Male</html:radio>
-						<html:radio property="gender" value="Female">Female</html:radio></td>
-					<td><html:errors property="gender" /></td>
-				</tr>
-				
-				
-				<tr>
-					<td>Date Of Birth</td>
-					<td><html:text property="dob" /></td>
-					<td><html:errors property="dob" /></td>
-				</tr>
-				
-				<tr>
-					<td>Date Of Joining</td>
-					<td><html:text property="doj" /></td>
-					<td><html:errors property="doj" /></td>
-				</tr>
-				
-				<tr>
-					<td>Address</td>
-					<td><html:textarea property="address" /></td>
-					<td><html:errors property="address" /></td>
-				</tr>
-				
-				<tr>
-					<td>Type</td>
-					<td><html:select property="type">
-						<html:option value="">Select Type</html:option>
-						<html:option value="Teaching">Teaching</html:option>
-						<html:option value="Non-Teaching">Non-Teaching</html:option>
-					</html:select>
-					<td><html:errors property="type" /></td>
-				</tr>
-				
-				<tr>
-					<td>Experties</td>
-					<td><html:select property="experties">
-						<html:option value="">Select Experties</html:option>
-						<html:option value="Electrical Department">Electrical Department</html:option>
-						<html:option value="Fitter Department">Fitter Department</html:option>
-						<html:option value="Accountant">Accountant</html:option>
-						<html:option value="Cashier">Cashier</html:option>
-						<html:option value="Manager">Manager</html:option>
-					</html:select>
-					<td><html:errors property="experties" /></td>
-				</tr>
-				
-				<tr>
-					<td align="center" colspan="2"><html:submit value="Submit"></html:submit></td>
-				</tr>
+					<div class="form-group">
+						<div>
+							<label for="fname" class="text-primary">Enter Name</label>
+							<html:text property="name" styleClass="form-control"></html:text>
+							<html:errors property="name" />
+						</div>
+					</div>
 
-			</table>
-		</html:form>
-	</center>
-</body>
-</html>
+
+					<div class="form-group">
+						<div>
+							<label for="fname" class="text-primary">Enter Email</label>
+							<html:text property="email" styleClass="form-control"></html:text>
+							<html:errors property="email" />
+						</div>
+					</div>
+
+
+
+					<div class="form-group">
+						<div>
+							<label for="fname" class="text-primary">Enter Mobile
+								Number</label>
+							<html:text property="phonenumber" styleClass="form-control" />
+							<html:errors property="phonenumber" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div>
+							<label for="fname" class="text-primary">Select Gender </label>
+							<html:errors property="gender" />
+							<html:radio property="gender" value="Male"
+								styleClass="radio-inline">
+								<label for="fname" class="text-primary">Male</label>
+							</html:radio>
+							<html:radio property="gender" value="Female"
+								styleClass="radio-inline">
+								<label for="fname" class="text-primary"> Female</label>
+							</html:radio>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="fname" class="text-primary">Date Of Birth</label>
+						<div class="controls input-append date form_date" data-date=""
+							data-date-format="dd MM yyyy" data-link-field="dtp_input1"
+							data-link-format="dd-mm-yyyy">
+							<html:text property="dob" size="16" styleId="dtp_input1"
+								styleClass="form-control" readonly="true"></html:text>
+							<span class="add-on"><i class="icon-th"></i></span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="fname" class="text-primary">Date Of Joining</label>
+						<div class="controls input-append date form_date" data-date=""
+							data-date-format="dd MM yyyy" data-link-field="dtp_input2"
+							data-link-format="dd-mm-yyyy">
+							<html:text property="doj" size="16" styleId="dtp_input2"
+								styleClass="form-control" readonly="true"></html:text>
+							<span class="add-on"><i class="icon-th"></i></span>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<div>
+							<label for="fname" class="text-primary">Enter Address</label>
+							<html:textarea property="address" styleClass="form-control"
+								rows="5" />
+							<html:errors property="address" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div>
+							<label for="fname" class="text-primary">Enter Staff Type</label>
+							<html:errors property="type" />
+							<html:select property="type" styleClass="form-control">
+								<html:option value="">Select Type</html:option>
+								<html:option value="Teaching">Teaching</html:option>
+								<html:option value="Non-Teaching">Non-Teaching</html:option>
+							</html:select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div>
+							<label for="fname" class="text-primary">Enter Staff
+								Experties</label>
+							<html:errors property="experties" />
+							<html:select property="experties" styleClass="form-control">
+								<html:option value="">Select Experties</html:option>
+								<html:option value="Elecdivical Department">Electrical Dept.</html:option>
+								<html:option value="Fitter Department">Fitter Dept.</html:option>
+								<html:option value="Accountant">Accountant</html:option>
+								<html:option value="Cashier">Cashier</html:option>
+								<html:option value="Manager">Manager</html:option>
+							</html:select>
+
+						</div>
+					</div>
+
+					<div class="form-group">
+						<html:submit value="Submit" styleClass="btn btn-primary">
+						</html:submit>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</html:form>
