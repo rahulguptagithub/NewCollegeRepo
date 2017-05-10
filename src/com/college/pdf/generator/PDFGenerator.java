@@ -5,9 +5,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletContext;
 
@@ -653,7 +657,7 @@ e.printStackTrace();
            document.add(statementTitle);
            
         PdfPCell slNoHeadingCell = new PdfPCell(new Paragraph("Sl No."));
-        slNoHeadingCell.setPaddingLeft(20);
+        //slNoHeadingCell.setPaddingLeft(20);
         slNoHeadingCell.setBorder(Rectangle.NO_BORDER);
    		
         PdfPCell acHolderCell = new PdfPCell(new Paragraph("A/c Holder Name"));
@@ -683,17 +687,22 @@ e.printStackTrace();
 	     transactionTable.addCell(debitHeadingCell);
 	     transactionTable.addCell(descriptionHeadingCell);
 	     transactionTable.addCell(seperatorCell);
-           double totalDebit = 0.0;
-           double totalCredit = 0.0;
-          
            int slNo =1; 
            PdfPCell descriptionCell = null;
            PdfPCell creditCell = null;
            PdfPCell debitCell = null;
+           
+           Map<String ,List<AccountDto>> groupAcMap = createAccountGroup(accountDtoList);
+           System.out.println("groupAcMap"+groupAcMap);
+           Set<String > keys = groupAcMap.keySet();
+           for(String key : keys){
+        	   accountDtoList =  groupAcMap.get(key);
+        	   double totalDebit = 0.0;
+               double totalCredit = 0.0;
             for(AccountDto accountDto: accountDtoList){
             	if(txIdList.contains(accountDto.getTxId()+"")){
             		
-            		totalDebit+= accountDto.getDebitAmount();
+            		//totalDebit+= accountDto.getDebitAmount();
             		                 
             		PdfPCell acHolder = new PdfPCell(new Paragraph(""+accountDto.getAcHolder()));
             		acHolder.setColspan(2);
@@ -702,16 +711,17 @@ e.printStackTrace();
             		if(accountDto.getCreditAmount() !=0){
                      creditCell = new PdfPCell(new Paragraph(""+accountDto.getCreditAmount()));
                      creditCell.setBorder(Rectangle.NO_BORDER);
-                     
+                     totalCredit = totalCredit + accountDto.getCreditAmount();
             		}else{
             			creditCell = new PdfPCell(new Paragraph(""));
                         creditCell.setBorder(Rectangle.NO_BORDER);	
+                        
             		}
                      
             		if(accountDto.getDebitAmount()!=0){
                      debitCell = new PdfPCell(new Paragraph(""+accountDto.getDebitAmount()));
                      debitCell.setBorder(Rectangle.NO_BORDER);
-                     
+                     totalDebit = totalDebit+ accountDto.getDebitAmount();
             		}else{
             			debitCell = new PdfPCell(new Paragraph(""));
                         debitCell.setBorder(Rectangle.NO_BORDER);
@@ -740,7 +750,29 @@ e.printStackTrace();
             	
             	}
             	}
+            slNo = 1;
+            PdfPCell totalCell = new PdfPCell(new Paragraph("Total Cr./Dr."));
+            totalCell.setPaddingLeft(15);
+            totalCell.setBorder(Rectangle.NO_BORDER);
+            totalCell.setColspan(2);
             
+            PdfPCell totalCreditCell = new PdfPCell(new Paragraph(""+totalCredit));
+            totalCreditCell.setPaddingLeft(40);
+            totalCreditCell.setBorder(Rectangle.NO_BORDER);
+            totalCreditCell.setColspan(2);
+            
+            PdfPCell totalDebitCell = new PdfPCell(new Paragraph(""+totalDebit));
+            //totalDebitCell.setPaddingLeft(15);
+            totalDebitCell.setBorder(Rectangle.NO_BORDER);
+            totalDebitCell.setColspan(6);
+            
+            
+            transactionTable.addCell(totalCell);
+            transactionTable.addCell(totalCreditCell);
+            transactionTable.addCell(totalDebitCell);
+            transactionTable.addCell(seperatorCell);
+            System.out.println("debit/credit" +totalCredit + totalDebit);
+           }
             document.add(transactionTable);
            
             document.close();
@@ -750,4 +782,24 @@ e.printStackTrace();
         
 		return fileName;
 	}
+	
+	public static  Map<String ,List<AccountDto>> createAccountGroup(List<AccountDto> accountDtoList){
+		
+		Map<String ,List<AccountDto>> groupAccountMap =  new HashMap<String ,List<AccountDto>>();
+		for(AccountDto accountDto :accountDtoList){
+			
+			if(groupAccountMap.containsKey(accountDto.getAcHolder())){
+				List<AccountDto> existingList = groupAccountMap.get(accountDto.getAcHolder());
+				existingList.add(accountDto);
+				groupAccountMap.put(accountDto.getAcHolder(), existingList);
+			}else{
+				List<AccountDto> groupLis = new ArrayList<AccountDto>();
+				groupLis.add(accountDto);
+				groupAccountMap.put(accountDto.getAcHolder(), groupLis);
+			}
+			
+		}
+		return groupAccountMap;
+	}
+	
 }

@@ -21,6 +21,8 @@
 	media="screen">
 <script src="js/bootstrap-datetimepicker.min.js"></script>
 
+
+
 </head>
 <body>
 	<div class="navbar-inverse">

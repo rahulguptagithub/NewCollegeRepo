@@ -4,7 +4,7 @@
 	<div class="panel panel-danger">
 		<div class="panel-heading">
 			<div>
-				<b class="text-primary">Student Enquiry Window</b>
+				<b class="text-primary">Staff Entry Window</b>
 			</div>
 		</div>
 
