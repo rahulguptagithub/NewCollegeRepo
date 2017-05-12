@@ -68,7 +68,7 @@ public class AdmissionFormUploadAction extends CollegeBaseDispatchAction {
 						folder.mkdir();
 					}
 					for (AcademicRecordsDto academicRecordsDto : academicRecordsList) {
-						fileNewName = sid + academicRecordsDto.getExamName() + "."
+						fileNewName = sid + "_"+academicRecordsDto.getExamName() + "."
 								+ this.getFileExtension(academicRecordsDto.getUploadFile());
 						newFile = new File(filePath, fileNewName);
 						if (!newFile.exists()) {
