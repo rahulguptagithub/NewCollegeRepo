@@ -16,6 +16,7 @@ import java.util.Set;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.struts.validator.DynaValidatorForm;
 import org.hibernate.Query;
@@ -201,7 +202,8 @@ public class CLGDaoImpl implements CLGDao{
 			Iterator<AcademicRecordsDto> academicRecordIterator = academicRecordsSet.iterator();
 			while(academicRecordIterator.hasNext()){
 				AcademicRecordsDto  academicRecordsDto =academicRecordIterator.next();
-				AcademicRecords academicRecords = new AcademicRecords(academicRecordsDto.getExamName(), academicRecordsDto.getPassedYear(), academicRecordsDto.getInstituteName(), academicRecordsDto.getBoard(), academicRecordsDto.getMarks());
+				AcademicRecords academicRecords =new AcademicRecords();
+				BeanUtils.copyProperties(academicRecords, academicRecordsDto);
 				session.save(academicRecords);
 				academicRecords.setStudent(student);
 			}
