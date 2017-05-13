@@ -10,9 +10,10 @@ import org.apache.struts.upload.FormFile;
 import org.apache.struts.validator.ValidatorActionForm;
 
 import com.college.dto.AcademicRecordsDto;
+import com.college.dto.OtherRecordDTO;
 
-public class AdmissionForm extends ValidatorActionForm{
-	
+public class AdmissionForm extends ValidatorActionForm {
+
 	/**
 	 * @author Ramesh
 	 */
@@ -25,56 +26,49 @@ public class AdmissionForm extends ValidatorActionForm{
 	private String dob;
 	private String category;
 	private FormFile photo;
-	
-	
+
 	private String co;
 	private String village;
 	private String po;
 	private String ps;
 	private String district;
 	private String phone;
-	
-	
+
 	private String pCo;
 	private String pVillage;
 	private String pPo;
 	private String pPs;
 	private String pDistrict;
 	private String pPhone;
-	
-	
-	
-	/*private String examName1;
-	private String passedYear1;
-	private String instituteName1;
-	private String board1;
-	private float marks1;
-	
-	private String examName2;
-	private String passedYear2;
-	private String instituteName2;
-	private String board2;
-	private float marks2;
-	
-	private String examName3;
-	private String passedYear3;
-	private String instituteName3;
-	private String board3;
-	private float marks3;*/
-	
+
+	/*
+	 * private String examName1; private String passedYear1; private String
+	 * instituteName1; private String board1; private float marks1;
+	 * 
+	 * private String examName2; private String passedYear2; private String
+	 * instituteName2; private String board2; private float marks2;
+	 * 
+	 * private String examName3; private String passedYear3; private String
+	 * instituteName3; private String board3; private float marks3;
+	 */
+
 	private String documents;
 	private double fee;
-	
+
 	private String session;
 	private String gender;
 	private String due_date;
 	private String permanentAdd[];
-	
-	private String  formNo;
+
+	private String formNo;
 	private List<AcademicRecordsDto> academicRecordsList = new ArrayList<AcademicRecordsDto>();
 	private String callFor;
 	private String indexId;
+	private String callType;
 	private AcademicRecordsDto academicRecordDTO = new AcademicRecordsDto();
+	private OtherRecordDTO otherRecordDTO = new OtherRecordDTO();
+	private List<OtherRecordDTO> otherRecordDTOList = new ArrayList<OtherRecordDTO>();
+
 	public String getFormNo() {
 		return formNo;
 	}
@@ -99,8 +93,6 @@ public class AdmissionForm extends ValidatorActionForm{
 		this.documents = documents;
 	}
 
-	
-
 	public double getFee() {
 		return fee;
 	}
@@ -113,125 +105,76 @@ public class AdmissionForm extends ValidatorActionForm{
 		this.fee = fee;
 	}
 
-	/*public String getExamName1() {
-		return examName1;
-	}
-
-	public void setExamName1(String examName1) {
-		this.examName1 = examName1;
-	}
-
-	public String getPassedYear1() {
-		return passedYear1;
-	}
-
-	public void setPassedYear1(String passedYear1) {
-		this.passedYear1 = passedYear1;
-	}
-
-	public String getInstituteName1() {
-		return instituteName1;
-	}
-
-	public void setInstituteName1(String instituteName1) {
-		this.instituteName1 = instituteName1;
-	}
-
-	public String getBoard1() {
-		return board1;
-	}
-
-	public void setBoard1(String board1) {
-		this.board1 = board1;
-	}
-
-	public float getMarks1() {
-		return marks1;
-	}
-
-	public void setMarks1(float marks1) {
-		this.marks1 = marks1;
-	}
-
-	public String getExamName2() {
-		return examName2;
-	}
-
-	public void setExamName2(String examName2) {
-		this.examName2 = examName2;
-	}
-
-	public String getPassedYear2() {
-		return passedYear2;
-	}
-
-	public void setPassedYear2(String passedYear2) {
-		this.passedYear2 = passedYear2;
-	}
-
-	public String getInstituteName2() {
-		return instituteName2;
-	}
-
-	public void setInstituteName2(String instituteName2) {
-		this.instituteName2 = instituteName2;
-	}
-
-	public String getBoard2() {
-		return board2;
-	}
-
-	public void setBoard2(String board2) {
-		this.board2 = board2;
-	}
-
-	public float getMarks2() {
-		return marks2;
-	}
-
-	public void setMarks2(float marks2) {
-		this.marks2 = marks2;
-	}
-
-	public String getExamName3() {
-		return examName3;
-	}
-
-	public void setExamName3(String examName3) {
-		this.examName3 = examName3;
-	}
-
-	public String getPassedYear3() {
-		return passedYear3;
-	}
-
-	public void setPassedYear3(String passedYear3) {
-		this.passedYear3 = passedYear3;
-	}
-
-	public String getInstituteName3() {
-		return instituteName3;
-	}
-
-	public void setInstituteName3(String instituteName3) {
-		this.instituteName3 = instituteName3;
-	}
-
-	public String getBoard3() {
-		return board3;
-	}
-
-	public void setBoard3(String board3) {
-		this.board3 = board3;
-	}
-
-	public float getMarks3() {
-		return marks3;
-	}
-
-	public void setMarks3(float marks3) {
-		this.marks3 = marks3;
-	}*/
+	/*
+	 * public String getExamName1() { return examName1; }
+	 * 
+	 * public void setExamName1(String examName1) { this.examName1 = examName1;
+	 * }
+	 * 
+	 * public String getPassedYear1() { return passedYear1; }
+	 * 
+	 * public void setPassedYear1(String passedYear1) { this.passedYear1 =
+	 * passedYear1; }
+	 * 
+	 * public String getInstituteName1() { return instituteName1; }
+	 * 
+	 * public void setInstituteName1(String instituteName1) {
+	 * this.instituteName1 = instituteName1; }
+	 * 
+	 * public String getBoard1() { return board1; }
+	 * 
+	 * public void setBoard1(String board1) { this.board1 = board1; }
+	 * 
+	 * public float getMarks1() { return marks1; }
+	 * 
+	 * public void setMarks1(float marks1) { this.marks1 = marks1; }
+	 * 
+	 * public String getExamName2() { return examName2; }
+	 * 
+	 * public void setExamName2(String examName2) { this.examName2 = examName2;
+	 * }
+	 * 
+	 * public String getPassedYear2() { return passedYear2; }
+	 * 
+	 * public void setPassedYear2(String passedYear2) { this.passedYear2 =
+	 * passedYear2; }
+	 * 
+	 * public String getInstituteName2() { return instituteName2; }
+	 * 
+	 * public void setInstituteName2(String instituteName2) {
+	 * this.instituteName2 = instituteName2; }
+	 * 
+	 * public String getBoard2() { return board2; }
+	 * 
+	 * public void setBoard2(String board2) { this.board2 = board2; }
+	 * 
+	 * public float getMarks2() { return marks2; }
+	 * 
+	 * public void setMarks2(float marks2) { this.marks2 = marks2; }
+	 * 
+	 * public String getExamName3() { return examName3; }
+	 * 
+	 * public void setExamName3(String examName3) { this.examName3 = examName3;
+	 * }
+	 * 
+	 * public String getPassedYear3() { return passedYear3; }
+	 * 
+	 * public void setPassedYear3(String passedYear3) { this.passedYear3 =
+	 * passedYear3; }
+	 * 
+	 * public String getInstituteName3() { return instituteName3; }
+	 * 
+	 * public void setInstituteName3(String instituteName3) {
+	 * this.instituteName3 = instituteName3; }
+	 * 
+	 * public String getBoard3() { return board3; }
+	 * 
+	 * public void setBoard3(String board3) { this.board3 = board3; }
+	 * 
+	 * public float getMarks3() { return marks3; }
+	 * 
+	 * public void setMarks3(float marks3) { this.marks3 = marks3; }
+	 */
 
 	public FormFile getPhoto() {
 		return photo;
@@ -248,6 +191,7 @@ public class AdmissionForm extends ValidatorActionForm{
 	public void setTrade(String trade) {
 		this.trade = trade;
 	}
+
 	public String getStudent_name() {
 		return student_name;
 	}
@@ -368,7 +312,6 @@ public class AdmissionForm extends ValidatorActionForm{
 		this.pPo = pPo;
 	}
 
-
 	public String getpPs() {
 		return pPs;
 	}
@@ -393,8 +336,6 @@ public class AdmissionForm extends ValidatorActionForm{
 		this.pPhone = pPhone;
 	}
 
-	
-	
 	public String getSession() {
 		return session;
 	}
@@ -421,28 +362,28 @@ public class AdmissionForm extends ValidatorActionForm{
 
 	@Override
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-	
-		  trade = null;
-		  student_name = null;
-		  guardian_type = null;
-		  guardian_name = null;
-		  occupation = null;
-		  dob = null;
-		  category = null;
-		  co = null;
-		  village = null;
-		  po = null;
-		  ps = null;
-		  district = null;
-		  phone = null;
-		  pCo = null;
-		  pVillage = null;
-		  pPo = null;
-		  pPs = null;
-		  pDistrict = null;
-		  pPhone = null;
-		  fee=0.0; 
-		  permanentAdd=null;
+
+		trade = null;
+		student_name = null;
+		guardian_type = null;
+		guardian_name = null;
+		occupation = null;
+		dob = null;
+		category = null;
+		co = null;
+		village = null;
+		po = null;
+		ps = null;
+		district = null;
+		phone = null;
+		pCo = null;
+		pVillage = null;
+		pPo = null;
+		pPs = null;
+		pDistrict = null;
+		pPhone = null;
+		fee = 0.0;
+		permanentAdd = null;
 	}
 
 	public List<AcademicRecordsDto> getAcademicRecordsList() {
@@ -476,6 +417,29 @@ public class AdmissionForm extends ValidatorActionForm{
 	public void setAcademicRecordDTO(AcademicRecordsDto academicRecordDTO) {
 		this.academicRecordDTO = academicRecordDTO;
 	}
-	
+
+	public OtherRecordDTO getOtherRecordDTO() {
+		return otherRecordDTO;
+	}
+
+	public void setOtherRecordDTO(OtherRecordDTO otherRecordDTO) {
+		this.otherRecordDTO = otherRecordDTO;
+	}
+
+	public List<OtherRecordDTO> getOtherRecordDTOList() {
+		return otherRecordDTOList;
+	}
+
+	public void setOtherRecordDTOList(List<OtherRecordDTO> otherRecordDTOList) {
+		this.otherRecordDTOList = otherRecordDTOList;
+	}
+
+	public String getCallType() {
+		return callType;
+	}
+
+	public void setCallType(String callType) {
+		this.callType = callType;
+	}
 
 }

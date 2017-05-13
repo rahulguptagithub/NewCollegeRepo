@@ -220,8 +220,7 @@ function ajaxDivRefresh(url, ajaxTagId, formDivName, callBack) {
 	var params = ""
 
 	if (formDivName) {
-		params = new FormData($(this)[0]);
-		//$('#' + formDivName + ' :input').serialize();
+		params = $('#' + formDivName + ' :input').serialize();
 	}
 	$.ajax({
 		url : url,

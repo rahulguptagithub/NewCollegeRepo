@@ -45,6 +45,16 @@
 				<td colspan="8"><hr color="green"></td>
 			</tr>
 			<tr>
+				<td colspan="8"><hr color="green"></td>
+			</tr>
+			<tr>
+				<td style="width: 100%;" colspan="8"><jsp:include
+						page="admission/studentOtherCertificate.jsp"></jsp:include></td>
+			</tr>
+			<tr>
+				<td colspan="8"><hr color="green"></td>
+			</tr>
+			<tr>
 				<td colspan="4" align="center"><input type="button"
 					value="Submit" onclick="submitAdmissionForm();"></td>
 			</tr>

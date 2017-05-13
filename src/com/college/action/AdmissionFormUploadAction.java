@@ -17,6 +17,7 @@ import org.apache.struts.upload.FormFile;
 import com.college.dao.CLGDao;
 import com.college.dao.CLGDaoImpl;
 import com.college.dto.AcademicRecordsDto;
+import com.college.dto.OtherRecordDTO;
 import com.college.dto.StudentDto;
 import com.college.form.AdmissionForm;
 import com.college.pdf.generator.PDFGenerator;
@@ -68,12 +69,32 @@ public class AdmissionFormUploadAction extends CollegeBaseDispatchAction {
 						folder.mkdir();
 					}
 					for (AcademicRecordsDto academicRecordsDto : academicRecordsList) {
-						fileNewName = sid + "_"+academicRecordsDto.getExamName() + "."
+						fileNewName = sid + "_" + academicRecordsDto.getExamName() + "."
 								+ this.getFileExtension(academicRecordsDto.getUploadFile());
 						newFile = new File(filePath, fileNewName);
 						if (!newFile.exists()) {
 							FileOutputStream fos = new FileOutputStream(newFile);
 							fos.write(academicRecordsDto.getUploadFile().getFileData());
+							fos.flush();
+							fos.close();
+						}
+					}
+
+				}
+				if (admissionForm.getOtherRecordDTOList() != null) {
+					List<OtherRecordDTO> otherRecordDTOList = admissionForm.getOtherRecordDTOList();
+					filePath = ctx.getRealPath("/") + "OtherRecords";
+					folder = new File(filePath);
+					if (!folder.exists()) {
+						folder.mkdir();
+					}
+					for (OtherRecordDTO otherRecordDTO : otherRecordDTOList) {
+						fileNewName = sid + "_" + otherRecordDTO.getCertificateName() + "."
+								+ this.getFileExtension(otherRecordDTO.getUploadFile());
+						newFile = new File(filePath, fileNewName);
+						if (!newFile.exists()) {
+							FileOutputStream fos = new FileOutputStream(newFile);
+							fos.write(otherRecordDTO.getUploadFile().getFileData());
 							fos.flush();
 							fos.close();
 						}
@@ -93,19 +114,38 @@ public class AdmissionFormUploadAction extends CollegeBaseDispatchAction {
 		return mapping.findForward(result);
 	}
 
-	public ActionForward addRemoveAcademicRecord(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+	public ActionForward addRemoveFileRecord(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) {
 		AdmissionForm admissionForm = (AdmissionForm) form;
-		if ("add".equalsIgnoreCase(admissionForm.getCallFor())) {
-			admissionForm.getAcademicRecordsList().add(admissionForm.getAcademicRecordDTO());
-		} else if ("remove".equalsIgnoreCase(admissionForm.getCallFor())) {
-			List<AcademicRecordsDto> academicRecordsList = admissionForm.getAcademicRecordsList();
-			int i = 0;
-			for (Iterator<AcademicRecordsDto> iterator = academicRecordsList.iterator(); iterator.hasNext();) {
-				AcademicRecordsDto academicRecordsDto = (AcademicRecordsDto) iterator.next();
-				if (i++ == Integer.valueOf(admissionForm.getIndexId())) {
-					iterator.remove();
-					break;
+		if ("academicRecord".equalsIgnoreCase(admissionForm.getCallType())) {
+			if ("add".equalsIgnoreCase(admissionForm.getCallFor())) {
+				admissionForm.getAcademicRecordsList().add(admissionForm.getAcademicRecordDTO());
+				admissionForm.setAcademicRecordDTO(new AcademicRecordsDto());
+			} else if ("remove".equalsIgnoreCase(admissionForm.getCallFor())) {
+				List<AcademicRecordsDto> academicRecordsList = admissionForm.getAcademicRecordsList();
+				int i = 0;
+				for (Iterator<AcademicRecordsDto> iterator = academicRecordsList.iterator(); iterator.hasNext();) {
+					AcademicRecordsDto academicRecordsDto = (AcademicRecordsDto) iterator.next();
+					if (i++ == Integer.valueOf(admissionForm.getIndexId())) {
+						iterator.remove();
+						break;
+					}
+				}
+			}
+
+		} else if ("otherRecord".equalsIgnoreCase(admissionForm.getCallType())) {
+			if ("add".equalsIgnoreCase(admissionForm.getCallFor())) {
+				admissionForm.getOtherRecordDTOList().add(admissionForm.getOtherRecordDTO());
+				admissionForm.setOtherRecordDTO(new OtherRecordDTO());
+			} else if ("remove".equalsIgnoreCase(admissionForm.getCallFor())) {
+				List<OtherRecordDTO> otherRecordList = admissionForm.getOtherRecordDTOList();
+				int i = 0;
+				for (Iterator<OtherRecordDTO> iterator = otherRecordList.iterator(); iterator.hasNext();) {
+					OtherRecordDTO otherRecordDTO = (OtherRecordDTO) iterator.next();
+					if (i++ == Integer.valueOf(admissionForm.getIndexId())) {
+						iterator.remove();
+						break;
+					}
 				}
 			}
 		}
