@@ -105,7 +105,7 @@
 <forward name="success" path="/jsp/ShowSucess.jsp"/>
 </action>
 
-<action path="/admissionSubmit" name="admissionForm" type="com.college.action.AdmissionFormUploadAction" input="/jsp/ShowAdmission.jsp" scope="session">
+<action path="/admissionSubmit" name="admissionForm" type="com.college.action.AdmissionFormUploadAction" parameter="method" input="/jsp/ShowAdmission.jsp" scope="session">
 <forward name="success" path="/jsp/ShowAdmissionConf.jsp"/>
 </action>
 

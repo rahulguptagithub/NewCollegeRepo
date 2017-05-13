@@ -1,10 +1,15 @@
 package com.college.form;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.upload.FormFile;
 import org.apache.struts.validator.ValidatorActionForm;
+
+import com.college.dto.AcademicRecordsDto;
 
 public class AdmissionForm extends ValidatorActionForm{
 	
@@ -39,7 +44,7 @@ public class AdmissionForm extends ValidatorActionForm{
 	
 	
 	
-	private String examName1;
+	/*private String examName1;
 	private String passedYear1;
 	private String instituteName1;
 	private String board1;
@@ -55,7 +60,7 @@ public class AdmissionForm extends ValidatorActionForm{
 	private String passedYear3;
 	private String instituteName3;
 	private String board3;
-	private float marks3;
+	private float marks3;*/
 	
 	private String documents;
 	private double fee;
@@ -66,9 +71,10 @@ public class AdmissionForm extends ValidatorActionForm{
 	private String permanentAdd[];
 	
 	private String  formNo;
-
-
-	
+	private List<AcademicRecordsDto> academicRecordsList = new ArrayList<AcademicRecordsDto>();
+	private String callFor;
+	private String indexId;
+	private AcademicRecordsDto academicRecordDTO = new AcademicRecordsDto();
 	public String getFormNo() {
 		return formNo;
 	}
@@ -107,7 +113,7 @@ public class AdmissionForm extends ValidatorActionForm{
 		this.fee = fee;
 	}
 
-	public String getExamName1() {
+	/*public String getExamName1() {
 		return examName1;
 	}
 
@@ -225,7 +231,7 @@ public class AdmissionForm extends ValidatorActionForm{
 
 	public void setMarks3(float marks3) {
 		this.marks3 = marks3;
-	}
+	}*/
 
 	public FormFile getPhoto() {
 		return photo;
@@ -438,5 +444,38 @@ public class AdmissionForm extends ValidatorActionForm{
 		  fee=0.0; 
 		  permanentAdd=null;
 	}
+
+	public List<AcademicRecordsDto> getAcademicRecordsList() {
+		return academicRecordsList;
+	}
+
+	public void setAcademicRecordsList(List<AcademicRecordsDto> academicRecordsList) {
+		this.academicRecordsList = academicRecordsList;
+	}
+
+	public String getCallFor() {
+		return callFor;
+	}
+
+	public void setCallFor(String callFor) {
+		this.callFor = callFor;
+	}
+
+	public String getIndexId() {
+		return indexId;
+	}
+
+	public void setIndexId(String indexId) {
+		this.indexId = indexId;
+	}
+
+	public AcademicRecordsDto getAcademicRecordDTO() {
+		return academicRecordDTO;
+	}
+
+	public void setAcademicRecordDTO(AcademicRecordsDto academicRecordDTO) {
+		this.academicRecordDTO = academicRecordDTO;
+	}
+	
 
 }

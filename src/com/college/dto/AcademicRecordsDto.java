@@ -1,6 +1,6 @@
 package com.college.dto;
 
-import javax.persistence.Column;
+import org.apache.struts.upload.FormFile;
 
 public class AcademicRecordsDto {
 
@@ -10,6 +10,7 @@ public class AcademicRecordsDto {
 	private String instituteName;
 	private String board;
 	private float marks;
+	private FormFile uploadFile;
 	public AcademicRecordsDto(){}
 	public AcademicRecordsDto(String examName,
 			String passedYear, String instituteName, String board, float marks) {
@@ -50,6 +51,12 @@ public class AcademicRecordsDto {
 	}
 	public void setMarks(float marks) {
 		this.marks = marks;
-	}	
-	
+	}
+	public FormFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(FormFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+		
 }

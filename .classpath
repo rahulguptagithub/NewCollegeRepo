@@ -8,45 +8,51 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Struts1/jars/commons-beanutils.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Struts1/jars/commons-collections.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Struts1/jars/commons-digester.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Struts1/jars/commons-fileupload.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Struts1/jars/commons-lang.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Struts1/jars/commons-logging.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Struts1/jars/commons-validator.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Struts1/jars/jakarta-oro.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Struts1/jars/struts.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Struts1/jars/struts-legacy.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/antlr-2.7.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/antlr-2.7.6rc1.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/asm.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/asm-attrs.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/c3p0-0.9.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/c3p0-0.9.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/cglib-2.1.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/commons-collections-2.1.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/commons-logging-1.0.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/dom4j-1.6.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/ehcache-1.2.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/ejb3-persistence.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/hibernate3.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/hibernate-annotations.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/hibernate-commons-annotations.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/hibernate-entitymanager.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/hibernate-validator.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/jaas.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/javassist.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/jaxen-1.1-beta-7.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/jboss-archive-browsing.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/jboss-cache.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/jdbc2_0-stdext.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/jgroups-2.2.8.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/jta.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/log4j-1.2.11.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/mysql.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/xerces-2.6.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/Hibernate 3.2/Jars/xml-apis.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Ramesh/Desktop/Student-DVD/pdf/itextpdf-5.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/activation.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/antlr-2.7.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/antlr-2.7.6rc1.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/asm.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/asm-attrs.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/c3p0-0.9.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/c3p0-0.9.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/cglib-2.1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/commons-beanutils.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/commons-collections.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/commons-collections-2.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/commons-digester.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/commons-fileupload.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/commons-lang.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/commons-logging.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/commons-logging-1.0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/commons-validator.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/commons-validator-1.4.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/ehcache-1.2.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/ejb3-persistence.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/hibernate3.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/hibernate-annotations.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/hibernate-commons-annotations.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/hibernate-entitymanager.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/hibernate-validator.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/itextpdf-5.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/jaas.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/jakarta-oro.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/javassist.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/jaxen-1.1-beta-7.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/jboss-archive-browsing.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/jboss-cache.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/jdbc2_0-stdext.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/jgroups-2.2.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/jta.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/log4j-1.2.11.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/mail.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/mysql.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/mysql-connector-java-5.1.25-bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/org-apache-commons-codec.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/servlet-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/struts.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/struts-legacy.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/xerces-2.6.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="G:/RahulJava/Github/College_Code/NewCollegeRepo/WebContent/WEB-INF/lib/xml-apis.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
