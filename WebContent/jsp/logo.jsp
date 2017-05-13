@@ -1,1 +1,1 @@
-<img alt="maharana_pratap" src="images/logo-image.jpg" width="70%">
+<img alt="maharana_pratap" src="images/imge-logo.png" width="70%">

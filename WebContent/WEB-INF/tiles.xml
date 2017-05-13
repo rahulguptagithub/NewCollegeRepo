@@ -13,11 +13,31 @@
 
 <definition name="ShowAboutDef" extends="BaseDef1">
 <put name ="BODY" value = "/jsp/About.jsp"/>
+<put name ="LMENU" value = "/jsp/LmenuNews.jsp"/>
+</definition>
+<definition name="ShowAdmissionProcedureDef" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/AdmissionRule.jsp"/>
+<put name ="LMENU" value = "/jsp/LmenuNews.jsp"/>
+</definition>
+<definition name="ShowLoginDef" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/Lmenu.jsp"/>
+<put name ="LMENU" value = "/jsp/LmenuNews.jsp"/>
+</definition>
+
+<definition name="ShowLabsDef" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/Labs.jsp"/>
+<put name ="LMENU" value = "/jsp/LmenuNews.jsp"/>
+</definition>
+
+<definition name="ShowGallery" extends="BaseDef1">
+<put name ="BODY" value = "/jsp/ImageSlider.jsp"/>
+<put name ="LMENU" value = "/jsp/LmenuNews.jsp"/>
 </definition>
 
 
 <definition name="HomeDef" extends="BaseDef1">
 <put name ="BODY" value = "/jsp/Welcome.jsp"/>
+<put name ="LMENU" value = "/jsp/LmenuNews.jsp"/>
 </definition>
 
 <definition name="HomeDef1" extends="BaseDef1">
