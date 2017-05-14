@@ -1,7 +1,10 @@
 package com.college.action;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 
@@ -150,6 +153,34 @@ public class AdmissionFormUploadAction extends CollegeBaseDispatchAction {
 			}
 		}
 		return mapping.findForward("admission");
+	}
+
+	public ActionForward getUploadedFile(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) {
+		AdmissionForm admissionForm = (AdmissionForm) form;
+		List<AcademicRecordsDto> academicRecordsList = admissionForm.getAcademicRecordsList();
+		List<OtherRecordDTO> otherRecordDTOList = admissionForm.getOtherRecordDTOList();
+		PrintWriter writer = null;
+		try {
+			byte[] fileData = null;
+			writer = response.getWriter();
+			if ("academic".equalsIgnoreCase(admissionForm.getCallFor())) {
+				fileData = academicRecordsList.get(Integer.valueOf(admissionForm.getIndexId())).getUploadFile()
+						.getFileData();
+
+			} else if ("other".equalsIgnoreCase(admissionForm.getCallFor())) {
+				fileData = otherRecordDTOList.get(Integer.valueOf(admissionForm.getIndexId())).getUploadFile()
+						.getFileData();
+			}
+			for (byte b : fileData) {
+				writer.write(b);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			writer.close();
+		}
+		return null;
 	}
 
 	private String getFileExtension(FormFile file) {
