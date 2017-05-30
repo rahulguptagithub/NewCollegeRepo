@@ -2,6 +2,7 @@ package com.college.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -14,6 +15,7 @@ import com.college.exception.InvalidAmountException;
 import com.college.exception.NotSufficientBalanceException;
 import com.college.form.CreditForm;
 import com.college.form.ExpenseForm;
+import com.college.util.CollegeUtil;
 
 public class ExpenseAction extends Action{
 	
@@ -22,9 +24,11 @@ public class ExpenseAction extends Action{
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		String result =  "fail";
+		HttpSession session = request.getSession();
+		if(CollegeUtil.isUserLoggedIn(session)){
 		ExpenseForm ef = (ExpenseForm) form;
 		if(ef.getExpense() > 0){
-		String userName =(String) request.getSession().getAttribute("userName");
+		String userName =(String) session.getAttribute("userName");
 		CLGDao cLGDao = new CLGDaoImpl();
 		boolean isDebited = cLGDao.debitAccount(ef, userName);
 		if(isDebited){
@@ -35,6 +39,9 @@ public class ExpenseAction extends Action{
 			throw new InvalidAmountException();
 		}
 		return mapping.findForward(result);
+		}else{
+			return mapping.findForward(result);
+		}
 	}
 
 }

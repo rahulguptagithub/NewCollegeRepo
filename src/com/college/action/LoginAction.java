@@ -29,11 +29,8 @@ public ActionForward execute(ActionMapping mapping, ActionForm form,
 		result = "home";
 	}
 	else{
-		System.out.println("elsddghdhfhfhf");
 		throw new CredentialException();
 	}
-	System.out.println("session attribute in loginActionn"+request.getSession().getAttribute("role"));
-	System.out.println("exitin with result value"+ result);
 	return mapping.findForward(result);
 }
 }

@@ -1,8 +1,10 @@
 package com.college.dto;
 
+import java.io.Serializable;
+
 import org.apache.struts.upload.FormFile;
 
-public class AcademicRecordsDto {
+public class AcademicRecordsDto implements Serializable{
 
 	
 	private String examName;

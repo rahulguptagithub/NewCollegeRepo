@@ -4,6 +4,7 @@
 <struts-config>
 <form-beans>
 <form-bean name="loginForm" type="com.college.form.LoginForm"/>
+<form-bean name="logoutForm" type="org.apache.struts.validator.DynaValidatorForm"/>
 <form-bean name="createUserForm" type="com.college.form.UserForm"/>
 <form-bean name="forgotPassword" type="com.college.form.ForgotPasswordForm"/>
 <form-bean name="admissionForm" type="com.college.form.AdmissionForm"/>
@@ -66,31 +67,38 @@
 
 
 <global-forwards>
-<forward name="creatUser" path="/jsp/ShowCreateUser.jsp"></forward>
-<forward name="forgotPassword" path="/jsp/ShowForgotPassword.jsp"></forward>
-<forward name="admission" path="/jsp/ShowAdmission.jsp"></forward>
-<forward name="feeStructure" path="/jsp/ShowFeeSructure.jsp"></forward>
-<forward name="feePayment" path="/jsp/ShowFeePayment.jsp"></forward>
-<forward name="expense" path="/jsp/ShowExpense.jsp"></forward>
-<forward name="credit" path="/jsp/ShowCredit.jsp"></forward>
-<forward name="transfer" path="/jsp/Showtransfer.jsp"></forward>
-<forward name="generateAdmissionForm" path="/jsp/ShowGenerateAdmissionForm.jsp"></forward>
-<forward name="generateFeeStructure" path="/jsp/ShowGenerateFeeStructureForm.jsp"></forward>
-<forward name="displayTransaction" path="/jsp/ShowTransaction.jsp"></forward>
+<forward name="creatUser" path="/jsp/ShowCreateUser.jsp"/>
 
-<forward name="staffEntry" path="/jsp/ShowStaffEntry.jsp"></forward>
-<forward name="collegeEnquiry" path="/jsp/ShowCollegeEnquiry.jsp"></forward>
+<forward name="forgotPassword" path="/jsp/ShowForgotPassword.jsp"/>
+<forward name="admission" path="/jsp/ShowAdmission.jsp"/>
+<forward name="feeStructure" path="/jsp/ShowFeeSructure.jsp"/>
+<forward name="feePayment" path="/jsp/ShowFeePayment.jsp"/>
+<forward name="expense" path="/jsp/ShowExpense.jsp"/>
+<forward name="credit" path="/jsp/ShowCredit.jsp"/>
+<forward name="transfer" path="/jsp/Showtransfer.jsp"/>
+<forward name="generateAdmissionForm" path="/jsp/ShowGenerateAdmissionForm.jsp"/>
+<forward name="generateFeeStructure" path="/jsp/ShowGenerateFeeStructureForm.jsp"/>
+<forward name="displayTransaction" path="/jsp/ShowTransaction.jsp"/>
 
-<forward name="displayStatement" path="/jsp/ShowDisplayStatement.jsp"></forward>
+<forward name="staffEntry" path="/jsp/ShowStaffEntry.jsp"/>
+<forward name="collegeEnquiry" path="/jsp/ShowCollegeEnquiry.jsp"/>
+
+<forward name="displayStatement" path="/jsp/ShowDisplayStatement.jsp"/>
 
 
 </global-forwards>
 
 
 <action-mappings>
+
 <action path="/LoginSubmit" name="loginForm" type="com.college.action.LoginAction" input="/index.jsp" scope="session">
 <exception key="login.invalid" type="com.college.exception.CredentialException" path="/index.jsp"/>
 <forward name="home" path="/jsp/home.jsp"/>
+</action>
+
+
+<action path="/logOutSubmit" name="logoutForm" type="com.college.action.LogOutAction" input="/index.jsp" scope="session">
+<forward name="success" path="/index.jsp"/>
 </action>
 
 <action path="/createSubmit" name="createUserForm" type="com.college.action.UserAction" input="/jsp/ShowCreateUser.jsp" scope="session" validate="true">
@@ -98,6 +106,7 @@
 <exception key="error.unauthorize.user" type="com.college.exception.AuthorizationException" path="/jsp/ShowCreateUser.jsp"/>
 
 <forward name="sucess" path="/jsp/ShowSucess.jsp"/>
+<forward name="fail" path="/index.jsp"/>
 </action>
 
 <action path="/forgotPwdSubmit" name="forgotPassword" type="com.college.action.ForgotPasswordAction" input="/index.jsp" scope="session">
@@ -116,40 +125,42 @@
 
 <action path="/feeStructureSubmit" name="feeStructureForm" type="com.college.action.FeeStructureAction" input="/jsp/ShowAdmission.jsp" scope="session">
 <forward name="success" path="/jsp/ShowSucess.jsp"/>
+<forward name="fail" path="/index.jsp"/>
 </action>
 
 <action path="/feePaymentSubmit" name="feePaymentForm" type="com.college.action.StudentPaymentAction" input="/jsp/ShowFeePayment.jsp" scope="session">
 <forward name="success" path="/jsp/ShowSucess.jsp"/>
+<forward name="fail" path="/index.jsp"/>
 </action>
 
 <action path="/expenseSubmit" name="expenseForm" type="com.college.action.ExpenseAction" input="/jsp/ShowExpense.jsp" scope="session">
 <exception key="error.invalid.anount" type="com.college.exception.InvalidAmountException" path="/jsp/ShowExpense.jsp"/>
-
 <forward name="success" path="/jsp/ShowSucess.jsp"/>
+<forward name="fail" path="/index.jsp"/>
 </action>
 
 <action path="/creditSubmit" name="creditForm" type="com.college.action.CreditAction" input="/jsp/ShowCredit.jsp" scope="session">
 <exception key="error.invalid.anount" type="com.college.exception.InvalidAmountException" path="/jsp/ShowCredit.jsp"/>
 <forward name="success" path="/jsp/ShowSucess.jsp"/>
+<forward name="fail" path="/index.jsp"/>
 </action>
 
 <action path="/transferSubmit" name="transferForm" type="com.college.action.TransferAction" input="/jsp/Showtransfer.jsp" scope="session">
 <forward name="success" path="/jsp/ShowSucess.jsp"/>
-<forward name="fail" path="/jsp/Showtransfer.jsp"/>
+<forward name="fail" path="/index.jsp"/>
 </action>
 
 <action path="/generateAdmissionFormSubmit" name="generateAdmissionForm" type="com.college.action.AdmissionFormGeneratorAction" input="/jsp/ShowGenerateAdmissionForm.jsp" scope="session">
 <forward name="success" path="/jsp/ShowFormGeneratedConf.jsp"/>
-<forward name="fail" path="/jsp/Showtransfer.jsp"/>
+<forward name="fail" path="/index.jsp"/>
 </action>
 
 <action path="/DownloadAdmissionFormSubmit" name="downloadAdmissionForm" type="com.college.action.AdmissionFormDownloadAction" input="/jsp/ShowGenerateAdmissionForm.jsp" scope="session">
-
 </action>
 <action path="/generateFeeStructureSubmit" name="generateFeeStructureForm" type="com.college.action.GenerateFeeStructuredAction" input="/jsp/ShowGenerateFeeStructureForm.jsp" scope="session">
-<exception key="error.invalid.record" type="com.college.exception.RecordNotFountException"></exception>
+<exception key="error.invalid.record" type="com.college.exception.RecordNotFountException"/>
 <forward name="success" path="/jsp/ShowFeeStructureConf.jsp"/>
-<forward name="fail" path="/jsp/ShowGenerateFeeStructureForm.jsp"/>
+<forward name="fail" path="/index.jsp"/>
 
 </action>
 
@@ -160,17 +171,17 @@
 <action path="/transactionSubmit" name="displayTransactionForm" type="com.college.action.UserCreditAccountAction" input="/jsp/ShowTransaction.jsp" scope="session">
 
 <forward name="success" path="/jsp/ShowTransactionResult.jsp"/>
-<forward name="fail" path="/jsp/ShowTransaction.jsp"/>
+<forward name="fail" path="/index.jsp"/>
 </action>
 
 <action path="/reportSubmit" name="reportForm" type="com.college.action.VoucherReportDownloadAction" input="/jsp/ShowTransactionResult.jsp" scope="session">
-<exception key="error.record.notselected" type="com.college.exception.RecordNotFountException"></exception>
+<exception key="error.record.notselected" type="com.college.exception.RecordNotFountException"/>
 </action>
 
 <action path="/statementSubmit" name="statementForm" type="com.college.action.StatementAction" input="/jsp/ShowDisplayStatement.jsp" scope="session">
  
 <forward name="success" path="/jsp/ShowStatementResult.jsp"/>
-<forward name="fail" path="/jsp/ShowTransaction.jsp"/>
+<forward name="fail" path="/index.jsp"/>
 </action>
 
 <action path="/transactionResultSubmit" name="statementResultForm" type="com.college.action.StatementDownloadAction" input="/jsp/ShowStatementResult.jsp" scope="session">
@@ -183,7 +194,7 @@
 
 <action path="/staffEntrySubmit" name="staffEntrySubmitValidationForm" type="com.college.action.StaffEntryAction" input="/jsp/ShowStaffEntry.jsp" scope="session">
 <forward name="success" path="/jsp/ShowSucess.jsp"/>
-<forward name="fail" path="/jsp/ShowStaffEntry.jsp"/>
+<forward name="fail" path="/index.jsp"/>
 </action>
 
 <action path="/SubmitStudentEnquiry" name="studentSubmitEnquiryValidationForm" 

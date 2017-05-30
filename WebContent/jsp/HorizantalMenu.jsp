@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Results</a></li>
-            <li><a href="/CollegeProject/jsp/ShowImageGallery.jsp">Image Galler</a></li>
+            <li><a href="/CollegeProject/jsp/ShowImageGallery.jsp">Image Gallery</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Procedure <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -34,6 +34,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/CollegeProject/jsp/ShowAbout.jsp">About Us</a></li>
             <li><a href="/CollegeProject/jsp/ShowLogin.jsp">Login</a></li>
+            
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
               <ul class="dropdown-menu">

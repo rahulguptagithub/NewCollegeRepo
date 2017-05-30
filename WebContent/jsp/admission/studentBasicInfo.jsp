@@ -27,14 +27,7 @@
 					<html:option value="2025-2027"></html:option>
 					<html:option value="2027-2029"></html:option>
 					<html:option value="2029-2031"></html:option>
-					<html:option value="2031-2033"></html:option>
-					<html:option value="2033-2035"></html:option>
-					<html:option value="2035-2037"></html:option>
-					<html:option value="2037-2039"></html:option>
-					<html:option value="2039-2041"></html:option>
-					<html:option value="2041-2043"></html:option>
-					<html:option value="2043-2045"></html:option>
-				</html:select></td>
+					</html:select></td>
 
 			<td>Gender</td>
 			<td><html:select property="gender"
@@ -76,9 +69,17 @@
 
 		</tr>
 		<tr>
-			<td>Candidate Date Of Birth(DD/MM/YYYY)</td>
-			<td><html:text property="dob" styleId="datepicker"
-					styleClass="textbox_normal width135"></html:text></td>
+			<td>Candidate Date Of Birth</td>
+			<td>
+			<div class="controls input-append date form_date" data-date=""
+						data-date-format="dd MM yyyy" data-link-field="dtp_input2"
+						data-link-format="dd-mm-yyyy">
+						<html:text property="dob" styleId="dtp_input2"
+					styleClass="textbox_normal width135" readonly="true"></html:text>
+					<span class="add-on"><i class="icon-th"></i></span>
+					</div>
+					</td>
+					
 			<td><label for="fname">Category</label></td>
 			<td><html:select property="category"
 					styleClass="textbox_normal width135">

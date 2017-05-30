@@ -51,8 +51,6 @@
 		<tr>
 			<td colspan="3" align="center">Permanent
 					Address</td>
-			<td align="center"><html:checkbox property="permanentAdd"
-					value="same" styleId="permanentAddId"></html:checkbox></td>
 		</tr>
 
 		<tr>

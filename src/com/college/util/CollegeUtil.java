@@ -9,6 +9,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
 
 import com.college.dto.ForgotPasswordDto;
 public class CollegeUtil {
@@ -55,4 +56,12 @@ public class CollegeUtil {
 			}
 	 
 	 }  
+	 
+	 public static boolean isUserLoggedIn( HttpSession session){
+		 if(session.getAttribute("userName") != null){
+		 return true;
+	 }else{
+		 return false; 
+	 }
+	 }
 }

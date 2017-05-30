@@ -1,8 +1,10 @@
 package com.college.dto;
 
+import java.io.Serializable;
+
 import org.apache.struts.upload.FormFile;
 
-public class OtherRecordDTO {
+public class OtherRecordDTO implements Serializable{
 
 	private String certificateName;
 	private FormFile uploadFile;

@@ -8,14 +8,14 @@ import org.apache.struts.actions.DispatchAction;
 public class CollegeBaseDispatchAction extends DispatchAction {
 
 	@Override
-	protected ActionForward dispatchMethod(ActionMapping arg0, ActionForm arg1, HttpServletRequest arg2,
-			HttpServletResponse arg3, String methodName) throws Exception {
+	protected ActionForward dispatchMethod(ActionMapping mapping, ActionForm form, HttpServletRequest req,
+			HttpServletResponse res, String methodName) throws Exception {
 		ActionForward actionForward = null;
 
 		try {
-			actionForward = super.dispatchMethod(arg0, arg1, arg2, arg3, methodName);
+			actionForward = super.dispatchMethod(mapping, form, req, res, methodName);
 		} catch (Exception e) {
-			actionForward = arg0.findForward("errorPage");
+			actionForward = mapping.findForward("errorPage");
 		}
 		return actionForward;
 	}

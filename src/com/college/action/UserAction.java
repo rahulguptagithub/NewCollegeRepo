@@ -2,6 +2,7 @@ package com.college.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -12,13 +13,16 @@ import com.college.dao.CLGDao;
 import com.college.dao.CLGDaoImpl;
 import com.college.exception.AuthorizationException;
 import com.college.form.UserForm;
+import com.college.util.CollegeUtil;
 
 public class UserAction extends Action{
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		String result = "";
+		String result = "fail";
+		HttpSession session = request.getSession();
+		if(CollegeUtil.isUserLoggedIn(session)){
 		UserForm userForm = (UserForm) form;
 		String userName =(String) request.getSession().getAttribute("userName");
 		CLGDao CLGDao = new CLGDaoImpl();
@@ -35,6 +39,9 @@ public class UserAction extends Action{
 		}
 		System.out.println("Exitig method with response " + result);
 		return mapping.findForward(result);
+		}else{
+			return mapping.findForward(result);	
+		}
 	}
 }
 

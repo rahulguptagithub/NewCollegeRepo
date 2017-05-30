@@ -7,7 +7,7 @@ import org.apache.struts.validator.ValidatorForm;
 
 public class LoginForm extends ValidatorForm{
 	/**
-	 * 
+	 * @author Ramesh
 	 */
 	private static final long serialVersionUID = 1L;
 	private String password;

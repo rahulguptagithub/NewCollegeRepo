@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -16,6 +17,7 @@ import com.college.dao.CLGDao;
 import com.college.dao.CLGDaoImpl;
 import com.college.dto.FeeStructureDto;
 import com.college.pdf.generator.PDFGenerator;
+import com.college.util.CollegeUtil;
 
 public class GenerateFeeStructuredAction extends Action{
 
@@ -24,12 +26,14 @@ public class GenerateFeeStructuredAction extends Action{
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		String result ="fail";
+		HttpSession httpSession = request.getSession();
+		if(CollegeUtil.isUserLoggedIn(httpSession)){
 		DynaValidatorForm dvf=(DynaValidatorForm) form;
 		String trade = dvf.getString("trade");
 		System.out.println("trade\t"+trade);
 		String session =dvf.getString("session");
 		System.out.println("session\t"+session);
-		ServletContext ctx =request.getSession().getServletContext();
+		ServletContext ctx = httpSession.getServletContext();
 		CLGDao cLGDao = new CLGDaoImpl();
 		List<FeeStructureDto> feeStructureDtoList = cLGDao.fetchFeeStructureDetail(trade , session ,ctx );
 		String fileName = PDFGenerator.createFeeStructurePDF(feeStructureDtoList, ctx);
@@ -39,5 +43,8 @@ public class GenerateFeeStructuredAction extends Action{
 			result ="success";
 		}
 		return mapping.findForward(result);
+		}else{
+			return mapping.findForward(result);
+		}
 	}
 }

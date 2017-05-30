@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -14,6 +15,7 @@ import com.college.dao.CLGDao;
 import com.college.dao.CLGDaoImpl;
 import com.college.dto.FeeStructureDto;
 import com.college.form.FeeStructureForm;
+import com.college.util.CollegeUtil;
 
 public class FeeStructureAction extends Action{
 	CLGDao cLGDao = null;
@@ -22,9 +24,11 @@ public class FeeStructureAction extends Action{
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		String result="fail";
+		HttpSession session = request.getSession();
+		if(CollegeUtil.isUserLoggedIn(session)){
 		FeeStructureForm feeStructureForm = (FeeStructureForm)form;
 		double total_fee = feeStructureForm.getAdmission_fee()+feeStructureForm.getExam_fee()+feeStructureForm.getDevelopment_fee()+feeStructureForm.getCaution_money()+feeStructureForm.getMisc_fee()+feeStructureForm.getPoor_boy_fund()+feeStructureForm.getTution_fee();
-		String userName =(String) request.getSession().getAttribute("userName");
+		String userName =(String) session.getAttribute("userName");
 		System.out.println("feeStructureForm.getDuration()" + feeStructureForm.getDuration());
 		FeeStructureDto feeStructureDto = new FeeStructureDto(feeStructureForm.getSession(),feeStructureForm.getTrade(),feeStructureForm.getDuration(),feeStructureForm.getAdmission_fee(),feeStructureForm.getExam_fee(),feeStructureForm.getTution_fee(),feeStructureForm.getDevelopment_fee(),feeStructureForm.getCaution_money(),feeStructureForm.getMisc_fee(),feeStructureForm.getPoor_boy_fund(),userName,(new java.sql.Date(new Date().getTime())).toString(),total_fee ,"Active","MTPJPL");
 		cLGDao =new CLGDaoImpl();
@@ -35,5 +39,8 @@ public class FeeStructureAction extends Action{
 			request.setAttribute("message", "Fee Breakup Saved Successfully !!!! \n Thank You...");
 		}
 		return mapping.findForward(result);
+		}else{
+			return mapping.findForward(result);	
+		}
 	}
 }

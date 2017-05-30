@@ -58,7 +58,7 @@ public class AdmissionForm extends ValidatorActionForm {
 	private String session;
 	private String gender;
 	private String due_date;
-	private String permanentAdd[];
+	//private String permanentAdd[];
 
 	private String formNo;
 	private List<AcademicRecordsDto> academicRecordsList = new ArrayList<AcademicRecordsDto>();
@@ -77,7 +77,7 @@ public class AdmissionForm extends ValidatorActionForm {
 		this.formNo = formNo;
 	}
 
-	public String[] getPermanentAdd() {
+	/*public String[] getPermanentAdd() {
 		return permanentAdd;
 	}
 
@@ -87,7 +87,7 @@ public class AdmissionForm extends ValidatorActionForm {
 
 	public String getDocuments() {
 		return documents;
-	}
+	}*/
 
 	public void setDocuments(String documents) {
 		this.documents = documents;
@@ -176,13 +176,14 @@ public class AdmissionForm extends ValidatorActionForm {
 	 * public void setMarks3(float marks3) { this.marks3 = marks3; }
 	 */
 
-	public FormFile getPhoto() {
+	/*public FormFile getPhoto() {
 		return photo;
 	}
 
 	public void setPhoto(FormFile photo) {
+		System.out.println("setting photo\t"+photo);
 		this.photo = photo;
-	}
+	}*/
 
 	public String getTrade() {
 		return trade;
@@ -254,6 +255,15 @@ public class AdmissionForm extends ValidatorActionForm {
 
 	public void setVillage(String village) {
 		this.village = village;
+	}
+
+	public FormFile getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(FormFile photo) {
+		System.out.println("data is being store\t"+photo);
+		this.photo = photo;
 	}
 
 	public String getPo() {
@@ -383,7 +393,7 @@ public class AdmissionForm extends ValidatorActionForm {
 		pDistrict = null;
 		pPhone = null;
 		fee = 0.0;
-		permanentAdd = null;
+		
 	}
 
 	public List<AcademicRecordsDto> getAcademicRecordsList() {

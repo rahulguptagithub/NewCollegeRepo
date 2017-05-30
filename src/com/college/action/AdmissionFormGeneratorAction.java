@@ -3,6 +3,7 @@ package com.college.action;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -12,6 +13,7 @@ import org.apache.struts.action.ActionMapping;
 import com.college.dao.CLGDao;
 import com.college.dao.CLGDaoImpl;
 import com.college.pdf.generator.PDFGenerator;
+import com.college.util.CollegeUtil;
 
 public class AdmissionFormGeneratorAction extends Action{
 	@Override
@@ -19,8 +21,10 @@ public class AdmissionFormGeneratorAction extends Action{
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		String result = "fail";
-		ServletContext ctx =request.getSession().getServletContext();
-		String userName =(String) request.getSession().getAttribute("userName");
+		HttpSession  session = request.getSession();
+		
+		ServletContext ctx =session.getServletContext();
+		String userName =(String) session.getAttribute("userName");
 		//PDFGenerator pdfGeneretor = new PDFGenerator();
 		CLGDao cLGDao = new CLGDaoImpl();
 		int formNo = cLGDao.generateAdmissionForm(userName);

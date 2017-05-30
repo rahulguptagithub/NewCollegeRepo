@@ -72,5 +72,13 @@
 					<html:link styleClass="btn btn-primary btn-block" forward="collegeEnquiry">College Enquiry</html:link>
 			</h4></td>
 	</tr>
+	
+	<tr>
+		<td><h4>
+		<html:form action="/logOutSubmit" method="post">
+		<html:submit value="Log Out" styleClass="btn btn-primary btn-block"></html:submit>
+		</html:form>
+		</h4></td>
+	</tr>
 
 </table>

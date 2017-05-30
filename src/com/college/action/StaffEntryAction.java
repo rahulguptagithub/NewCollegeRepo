@@ -2,6 +2,7 @@ package com.college.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -12,6 +13,7 @@ import com.college.dto.StaffEntryTO;
 import com.college.form.StaffEntrySubmitValidationForm;
 import com.college.student.impl.StaffEntryService;
 import com.college.student.impl.StaffEntryServiceImpl;
+import com.college.util.CollegeUtil;
 
 
 public class StaffEntryAction extends Action {
@@ -26,6 +28,8 @@ public class StaffEntryAction extends Action {
 	public ActionForward addStaffEnquiry(ActionMapping am, ActionForm af,
 			HttpServletRequest req, HttpServletResponse res) {
 		String result ="fail";
+		HttpSession session = req.getSession();
+		if(CollegeUtil.isUserLoggedIn(session)){
 		StaffEntryService staffEntryService= new StaffEntryServiceImpl();
 		System.out.println("action class method called");
 		StaffEntrySubmitValidationForm staffEntrySubmitValidationForm = (StaffEntrySubmitValidationForm) af;
@@ -46,6 +50,9 @@ public class StaffEntryAction extends Action {
 		}
 		System.out.println("Record submitted");
 		return am.findForward(result);
+		}else{
+			return am.findForward(result);	
+		}
 
 	}
 

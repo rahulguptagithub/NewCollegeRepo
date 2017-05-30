@@ -2,6 +2,7 @@ package com.college.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionError;
@@ -13,6 +14,7 @@ import org.apache.struts.action.ActionMapping;
 import com.college.dao.CLGDao;
 import com.college.dao.CLGDaoImpl;
 import com.college.form.TransferForm;
+import com.college.util.CollegeUtil;
 
 public class TransferAction extends Action{
 	
@@ -21,9 +23,11 @@ public class TransferAction extends Action{
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		String result = "fail";
+		HttpSession session = request.getSession();
+		if(CollegeUtil.isUserLoggedIn(session)){
 		ActionErrors actnErrs = new ActionErrors();
 		TransferForm transferForm =(TransferForm)form;
-		String userName =(String) request.getSession().getAttribute("userName");
+		String userName =(String) session.getAttribute("userName");
 		if(transferForm.getFromAccount().equalsIgnoreCase(transferForm.getToAccount())){
 			System.out.println("----both account equal------");
 			actnErrs.add("fromAndToEqual", new ActionError("error.both.account.equal"));
@@ -36,6 +40,9 @@ public class TransferAction extends Action{
 			request.setAttribute("message", "Amount Transfered Successfully!!");
 		}
 		return mapping.findForward(result);
+		}else{
+			return mapping.findForward(result);
+		}
 	}
 
 }
